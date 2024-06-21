@@ -1,0 +1,1611 @@
+fileFormatVersion: 2
+guid: 31e82f5eaa4e3b64082ddb3d16a637af
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7495373321489435158
+    second: _irl-2_0
+  - first:
+      213: -3840233338257473845
+    second: _irl-2_1
+  - first:
+      213: -7666772971912412357
+    second: _irl-2_2
+  - first:
+      213: -5743976045971620543
+    second: _irl-2_3
+  - first:
+      213: -7345794100855535859
+    second: _irl-2_4
+  - first:
+      213: 1429324882464902913
+    second: _irl-2_5
+  - first:
+      213: -467365732598713329
+    second: _irl-2_6
+  - first:
+      213: -7582786537451773718
+    second: _irl-2_7
+  - first:
+      213: -4052429143635863779
+    second: _irl-2_8
+  - first:
+      213: -3478400523403393101
+    second: _irl-2_9
+  - first:
+      213: -6933555311964985842
+    second: _irl-2_10
+  - first:
+      213: -1668403282343317033
+    second: _irl-2_11
+  - first:
+      213: 854276909071688580
+    second: _irl-2_12
+  - first:
+      213: -5086232167032417605
+    second: _irl-2_13
+  - first:
+      213: 4847342558236157081
+    second: _irl-2_14
+  - first:
+      213: 4604239486967406528
+    second: _irl-2_15
+  - first:
+      213: -6495157637947495499
+    second: _irl-2_16
+  - first:
+      213: 8085330738222381477
+    second: _irl-2_17
+  - first:
+      213: -2558852901284851792
+    second: _irl-2_18
+  - first:
+      213: 8761962097029904836
+    second: _irl-2_19
+  - first:
+      213: -5474686500397417381
+    second: _irl-2_20
+  - first:
+      213: -4488740372189169492
+    second: _irl-2_21
+  - first:
+      213: -881315720994488934
+    second: _irl-2_22
+  - first:
+      213: 7386452876654796610
+    second: _irl-2_23
+  - first:
+      213: -5616427512026739230
+    second: _irl-2_24
+  - first:
+      213: 4077224353552199529
+    second: _irl-2_25
+  - first:
+      213: -3881047310126906807
+    second: _irl-2_26
+  - first:
+      213: 398892213420291900
+    second: _irl-2_27
+  - first:
+      213: 6798209879010675143
+    second: _irl-2_28
+  - first:
+      213: -8116784986124816753
+    second: _irl-2_29
+  - first:
+      213: 7141311648880338516
+    second: _irl-2_30
+  - first:
+      213: -8276346029229365821
+    second: _irl-2_31
+  - first:
+      213: -1673871356074992269
+    second: _irl-2_32
+  - first:
+      213: -3658468516032437985
+    second: _irl-2_33
+  - first:
+      213: 8802175461109662246
+    second: _irl-2_34
+  - first:
+      213: 1831569462725350632
+    second: _irl-2_35
+  - first:
+      213: -1956542710265927130
+    second: _irl-2_36
+  - first:
+      213: 8329214488978351171
+    second: _irl-2_37
+  - first:
+      213: 3020723233183902080
+    second: _irl-2_38
+  - first:
+      213: 3364381884909863797
+    second: _irl-2_39
+  - first:
+      213: -1161733604825230057
+    second: _irl-2_40
+  - first:
+      213: 7797060329607362144
+    second: _irl-2_41
+  - first:
+      213: -2873890542264024105
+    second: _irl-2_42
+  - first:
+      213: 752138332461079063
+    second: _irl-2_43
+  - first:
+      213: 6045514102998392242
+    second: _irl-2_44
+  - first:
+      213: 6691906492667634717
+    second: _irl-2_45
+  - first:
+      213: -3542573690917430409
+    second: _irl-2_46
+  - first:
+      213: -1727754745829009807
+    second: _irl-2_47
+  - first:
+      213: 2536622327819449349
+    second: _irl-2_48
+  - first:
+      213: -2205659453300714842
+    second: _irl-2_49
+  - first:
+      213: 9116022034008164315
+    second: _irl-2_50
+  - first:
+      213: -532533563683695736
+    second: _irl-2_51
+  - first:
+      213: -4224407007053093618
+    second: _irl-2_52
+  - first:
+      213: 2547381429449206410
+    second: _irl-2_53
+  - first:
+      213: 8091590240955633209
+    second: _irl-2_54
+  - first:
+      213: 5415555387742861202
+    second: _irl-2_55
+  - first:
+      213: -5660405337498431948
+    second: _irl-2_56
+  - first:
+      213: 4431833726728621629
+    second: _irl-2_57
+  - first:
+      213: -8899759758464086853
+    second: _irl-2_58
+  - first:
+      213: 4511677745740337227
+    second: _irl-2_59
+  - first:
+      213: 107985222994593661
+    second: _irl-2_60
+  - first:
+      213: -5507486943564117065
+    second: _irl-2_61
+  - first:
+      213: 8726936108765221430
+    second: _irl-2_62
+  - first:
+      213: 3756892891460831183
+    second: _irl-2_63
+  - first:
+      213: 7768258658795211178
+    second: _irl-2_64
+  - first:
+      213: 4183565320142807841
+    second: _irl-2_65
+  - first:
+      213: -341997036184479564
+    second: _irl-2_66
+  - first:
+      213: 5581199837452594282
+    second: _irl-2_67
+  - first:
+      213: -6628423593925930789
+    second: _irl-2_68
+  - first:
+      213: -3610138400345434214
+    second: _irl-2_69
+  - first:
+      213: -8786368147252405366
+    second: _irl-2_70
+  - first:
+      213: -8166541143050206598
+    second: _irl-2_71
+  - first:
+      213: -3306889932691745625
+    second: _irl-2_72
+  - first:
+      213: 1199079550335708542
+    second: _irl-2_73
+  - first:
+      213: -7830651261797845321
+    second: _irl-2_74
+  - first:
+      213: 8313449865974458201
+    second: _irl-2_75
+  - first:
+      213: -3122571677486055260
+    second: _irl-2_76
+  - first:
+      213: 5985094119620364123
+    second: _irl-2_77
+  - first:
+      213: -2217020532618186735
+    second: _irl-2_78
+  - first:
+      213: -1832439183547062938
+    second: _irl-2_79
+  - first:
+      213: 2805654493467615564
+    second: _irl-2_80
+  - first:
+      213: 3988229649875136523
+    second: _irl-2_81
+  - first:
+      213: -2961851275218448650
+    second: _irl-2_82
+  - first:
+      213: 4472572898183056529
+    second: _irl-2_83
+  - first:
+      213: 2039215137913155768
+    second: _irl-2_84
+  - first:
+      213: -5558765900203433184
+    second: _irl-2_85
+  - first:
+      213: 6075044301191575153
+    second: _irl-2_86
+  - first:
+      213: 6218932990207304060
+    second: _irl-2_87
+  - first:
+      213: 3705900649461987861
+    second: _irl-2_88
+  - first:
+      213: -1051400674825657741
+    second: _irl-2_89
+  - first:
+      213: -4953554681438833648
+    second: _irl-2_90
+  - first:
+      213: 2085144365981877077
+    second: _irl-2_91
+  - first:
+      213: 7752464862434814686
+    second: _irl-2_92
+  - first:
+      213: 7340901846738377468
+    second: _irl-2_93
+  - first:
+      213: -103197719577674704
+    second: _irl-2_94
+  - first:
+      213: -6496591839028821100
+    second: _irl-2_95
+  - first:
+      213: 3759932084169333304
+    second: _irl-2_96
+  - first:
+      213: 6135431849207303068
+    second: _irl-2_97
+  - first:
+      213: -2867622493971188068
+    second: _irl-2_98
+  - first:
+      213: -1193032226872752966
+    second: _irl-2_99
+  - first:
+      213: -5395135282116544316
+    second: _irl-2_100
+  - first:
+      213: 2254346715332552744
+    second: _irl-2_101
+  - first:
+      213: -8148276949944974533
+    second: _irl-2_102
+  - first:
+      213: -4097827778861393239
+    second: _irl-2_103
+  - first:
+      213: -2772962894176582127
+    second: _irl-2_104
+  - first:
+      213: -7155922216717544298
+    second: _irl-2_105
+  - first:
+      213: -1735966263858901022
+    second: _irl-2_106
+  - first:
+      213: 5312777249538396071
+    second: _irl-2_107
+  - first:
+      213: -6346299927142590527
+    second: _irl-2_108
+  - first:
+      213: -5529822693135974529
+    second: _irl-2_109
+  - first:
+      213: -6279177593102897017
+    second: _irl-2_110
+  - first:
+      213: 2992540412193609020
+    second: _irl-2_111
+  - first:
+      213: 4398297388409321701
+    second: _irl-2_112
+  - first:
+      213: 6479351019693628708
+    second: _irl-2_113
+  - first:
+      213: 1867185035729666093
+    second: _irl-2_114
+  - first:
+      213: 8700316102823652734
+    second: _irl-2_115
+  - first:
+      213: -782055804982820755
+    second: _irl-2_116
+  - first:
+      213: 3486621531553818399
+    second: _irl-2_117
+  - first:
+      213: 5790238931755013382
+    second: _irl-2_118
+  - first:
+      213: 6463640403764262893
+    second: _irl-2_119
+  - first:
+      213: -6405297200236025648
+    second: _irl-2_120
+  - first:
+      213: -5339260099454241186
+    second: _irl-2_121
+  - first:
+      213: -4110548137098930008
+    second: _irl-2_122
+  - first:
+      213: 3713115631555589626
+    second: _irl-2_123
+  - first:
+      213: 5260778657270552600
+    second: _irl-2_124
+  - first:
+      213: -2536642608103180878
+    second: _irl-2_125
+  - first:
+      213: -3294116132930429687
+    second: _irl-2_126
+  - first:
+      213: 1573964339118463845
+    second: _irl-2_127
+  - first:
+      213: -4545173795098089485
+    second: _irl-2_128
+  - first:
+      213: -2107828901786350791
+    second: _irl-2_129
+  - first:
+      213: -827729639975918465
+    second: _irl-2_130
+  - first:
+      213: 118669062985506879
+    second: _irl-2_131
+  - first:
+      213: 3906959159495331153
+    second: _irl-2_132
+  - first:
+      213: 982276994472587333
+    second: _irl-2_133
+  - first:
+      213: -4778213351375235534
+    second: _irl-2_134
+  - first:
+      213: 7263284380942255521
+    second: _irl-2_135
+  - first:
+      213: 5939014446692827349
+    second: _irl-2_136
+  - first:
+      213: -964468719331854586
+    second: _irl-2_137
+  - first:
+      213: -6135406669128207508
+    second: _irl-2_138
+  - first:
+      213: 2144547578820948493
+    second: _irl-2_139
+  - first:
+      213: 1060201521266919545
+    second: _irl-2_140
+  - first:
+      213: -5186547171042837488
+    second: _irl-2_141
+  - first:
+      213: 460900567572145340
+    second: _irl-2_142
+  - first:
+      213: 2887368429707451110
+    second: _irl-2_143
+  - first:
+      213: 2995379930648074056
+    second: _irl-2_144
+  - first:
+      213: 5079900328464529236
+    second: _irl-2_145
+  - first:
+      213: -7023690482965615013
+    second: _irl-2_146
+  - first:
+      213: 879218968013008352
+    second: _irl-2_147
+  - first:
+      213: -4613391524018698638
+    second: _irl-2_148
+  - first:
+      213: -4587422403973038958
+    second: _irl-2_149
+  - first:
+      213: -3735450407063913122
+    second: _irl-2_150
+  - first:
+      213: -8978786686338850348
+    second: _irl-2_151
+  - first:
+      213: -1459064845004321816
+    second: _irl-2_152
+  - first:
+      213: -3974736994719178372
+    second: _irl-2_153
+  - first:
+      213: -4288488848671658021
+    second: _irl-2_154
+  - first:
+      213: 6907411447602646279
+    second: _irl-2_155
+  - first:
+      213: -4841426900274357023
+    second: _irl-2_156
+  - first:
+      213: 6222711653396417967
+    second: _irl-2_157
+  - first:
+      213: 482906755035871002
+    second: _irl-2_158
+  - first:
+      213: 1944408379367159208
+    second: _irl-2_159
+  - first:
+      213: 7288206994735107231
+    second: _irl-2_160
+  - first:
+      213: -2702383411551748328
+    second: _irl-2_161
+  - first:
+      213: 7574150439978389968
+    second: _irl-2_162
+  - first:
+      213: 952841775022457412
+    second: _irl-2_163
+  - first:
+      213: 6654608173134402027
+    second: _irl-2_164
+  - first:
+      213: -7256470387266443292
+    second: _irl-2_165
+  - first:
+      213: 5441082035589846146
+    second: _irl-2_166
+  - first:
+      213: -1538158747520482531
+    second: _irl-2_167
+  - first:
+      213: -4558446033729476862
+    second: _irl-2_168
+  - first:
+      213: 8355107700815489157
+    second: _irl-2_169
+  - first:
+      213: -9114894505581318705
+    second: _irl-2_170
+  - first:
+      213: -6452245335482863384
+    second: _irl-2_171
+  - first:
+      213: -4592637487599608456
+    second: _irl-2_172
+  - first:
+      213: 4349444695904299439
+    second: _irl-2_173
+  - first:
+      213: 6958109409474881087
+    second: _irl-2_174
+  - first:
+      213: 3544159456167040183
+    second: _irl-2_175
+  - first:
+      213: 1477947081384908829
+    second: _irl-2_176
+  - first:
+      213: -152412919559145269
+    second: _irl-2_177
+  - first:
+      213: -3645561445401732314
+    second: _irl-2_178
+  - first:
+      213: 1116259441963664287
+    second: _irl-2_179
+  - first:
+      213: 5056934148590616514
+    second: _irl-2_180
+  - first:
+      213: 4179198127522542144
+    second: _irl-2_181
+  - first:
+      213: -5934586962321731433
+    second: _irl-2_182
+  - first:
+      213: 2467358631970612736
+    second: _irl-2_183
+  - first:
+      213: 8318290485385443511
+    second: _irl-2_184
+  - first:
+      213: 2881126275174347950
+    second: _irl-2_185
+  - first:
+      213: -293119694641520724
+    second: _irl-2_186
+  - first:
+      213: -6232887784845898195
+    second: _irl-2_187
+  - first:
+      213: 9087071616686500195
+    second: _irl-2_188
+  - first:
+      213: -3699812831548540043
+    second: _irl-2_189
+  - first:
+      213: 2514304225324953174
+    second: _irl-2_190
+  - first:
+      213: -6271847295859578326
+    second: _irl-2_191
+  - first:
+      213: 3747302966898227793
+    second: _irl-2_192
+  - first:
+      213: 4987577459290991676
+    second: _irl-2_193
+  - first:
+      213: -5452603983359960620
+    second: _irl-2_194
+  - first:
+      213: 8413574610226043948
+    second: _irl-2_195
+  - first:
+      213: 2106381201238112642
+    second: _irl-2_196
+  - first:
+      213: 848569322300881884
+    second: _irl-2_197
+  - first:
+      213: 1212660323757607127
+    second: _irl-2_198
+  - first:
+      213: 3900246724793229193
+    second: _irl-2_199
+  - first:
+      213: -7225441408460919558
+    second: _irl-2_200
+  - first:
+      213: -409738762291437211
+    second: _irl-2_201
+  - first:
+      213: 7344252729709391997
+    second: _irl-2_202
+  - first:
+      213: 7759806012881503931
+    second: _irl-2_203
+  - first:
+      213: 5155592775914843841
+    second: _irl-2_204
+  - first:
+      213: -390388784570510542
+    second: _irl-2_205
+  - first:
+      213: 3369697318621908865
+    second: _irl-2_206
+  - first:
+      213: -7939179516555766239
+    second: _irl-2_207
+  - first:
+      213: 6363622888484410748
+    second: _irl-2_208
+  - first:
+      213: -3647519697922667922
+    second: _irl-2_209
+  - first:
+      213: 1039472001517674114
+    second: _irl-2_210
+  - first:
+      213: 1514882543408589333
+    second: _irl-2_211
+  - first:
+      213: -7596817591351356344
+    second: _irl-2_212
+  - first:
+      213: 4538958092453659206
+    second: _irl-2_213
+  - first:
+      213: 6577886794035915518
+    second: _irl-2_214
+  - first:
+      213: 8776425228574182389
+    second: _irl-2_215
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: _irl-2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a415ed25ae40860800000000000000
+      internalID: 7495373321489435158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 444
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcefc821020c4bac0800000000000000
+      internalID: -3840233338257473845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_2
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 444
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3348933a962a9590800000000000000
+      internalID: -7666772971912412357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_3
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 444
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d3285183c4940b0800000000000000
+      internalID: -5743976045971620543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_4
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 444
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0788595f2f7e0a90800000000000000
+      internalID: -7345794100855535859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_5
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 444
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f82ff586bf5d310800000000000000
+      internalID: 1429324882464902913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 370
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f047348a7559389f0800000000000000
+      internalID: -467365732598713329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_7
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 370
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae0a29bc1d784c690800000000000000
+      internalID: -7582786537451773718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_8
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 370
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17d4202a21e2c7c0800000000000000
+      internalID: -4052429143635863779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_9
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 370
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b70200472d3abfc0800000000000000
+      internalID: -3478400523403393101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_10
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 370
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06edc7ed2017cf90800000000000000
+      internalID: -6933555311964985842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_11
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 370
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d1b4d5ed04a8d8e0800000000000000
+      internalID: -1668403282343317033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 297
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 483690992500bdb00800000000000000
+      internalID: 854276909071688580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_13
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 296
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb21ed6cac21a69b0800000000000000
+      internalID: -5086232167032417605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_14
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 296
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 994ac48df58354340800000000000000
+      internalID: 4847342558236157081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_15
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 296
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cfd4894b6b85ef30800000000000000
+      internalID: 4604239486967406528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_16
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 296
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb69f58a809cd5a0800000000000000
+      internalID: -6495157637947495499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_17
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 296
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9ba4fe77dd43070800000000000000
+      internalID: 8085330738222381477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 222
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf407af7d02d7cd0800000000000000
+      internalID: -2558852901284851792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_19
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 222
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c977e8ba1eb89970800000000000000
+      internalID: 8761962097029904836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_20
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 222
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c7f2f42a10604b0800000000000000
+      internalID: -5474686500397417381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_21
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 222
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca8b5b2f96ac4b1c0800000000000000
+      internalID: -4488740372189169492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_22
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 222
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9df72b6500f4c3f0800000000000000
+      internalID: -881315720994488934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_23
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 222
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24fdb2791c3f18660800000000000000
+      internalID: 7386452876654796610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 148
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ed4ae65fe07e02b0800000000000000
+      internalID: -5616427512026739230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_25
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 148
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96fec0f82f5359830800000000000000
+      internalID: 4077224353552199529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_26
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 148
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942866bb800c32ac0800000000000000
+      internalID: -3881047310126906807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_27
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 148
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c37f59cca56298500800000000000000
+      internalID: 398892213420291900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_28
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 148
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c98bf2ddd7185e50800000000000000
+      internalID: 6798209879010675143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_29
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 148
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8e6ec74f036b5f80800000000000000
+      internalID: -8116784986124816753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 74
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4562fddbb190b1360800000000000000
+      internalID: 7141311648880338516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_31
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 74
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c5a199e223842d80800000000000000
+      internalID: -8276346029229365821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_32
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 74
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37dd275ced635c8e0800000000000000
+      internalID: -1673871356074992269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_33
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 74
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f11afef94428a3dc0800000000000000
+      internalID: -3658468516032437985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_34
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 74
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6220a1a22fb972a70800000000000000
+      internalID: 8802175461109662246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_35
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 74
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e49237e8ba0b6910800000000000000
+      internalID: 1831569462725350632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _irl-2_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 99
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a28be65c6f8d4e0800000000000000
+      internalID: -1956542710265927130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Girl-2_0
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 46
+        width: 67
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4903d80c1e3fbe54d90694bc8a55a83d
+      internalID: 1104865956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Girl-2_0: 1104865956
+      _irl-2_0: 7495373321489435158
+      _irl-2_1: -3840233338257473845
+      _irl-2_10: -6933555311964985842
+      _irl-2_11: -1668403282343317033
+      _irl-2_12: 854276909071688580
+      _irl-2_13: -5086232167032417605
+      _irl-2_14: 4847342558236157081
+      _irl-2_15: 4604239486967406528
+      _irl-2_16: -6495157637947495499
+      _irl-2_17: 8085330738222381477
+      _irl-2_18: -2558852901284851792
+      _irl-2_19: 8761962097029904836
+      _irl-2_2: -7666772971912412357
+      _irl-2_20: -5474686500397417381
+      _irl-2_21: -4488740372189169492
+      _irl-2_22: -881315720994488934
+      _irl-2_23: 7386452876654796610
+      _irl-2_24: -5616427512026739230
+      _irl-2_25: 4077224353552199529
+      _irl-2_26: -3881047310126906807
+      _irl-2_27: 398892213420291900
+      _irl-2_28: 6798209879010675143
+      _irl-2_29: -8116784986124816753
+      _irl-2_3: -5743976045971620543
+      _irl-2_30: 7141311648880338516
+      _irl-2_31: -8276346029229365821
+      _irl-2_32: -1673871356074992269
+      _irl-2_33: -3658468516032437985
+      _irl-2_34: 8802175461109662246
+      _irl-2_35: 1831569462725350632
+      _irl-2_36: -1956542710265927130
+      _irl-2_4: -7345794100855535859
+      _irl-2_5: 1429324882464902913
+      _irl-2_6: -467365732598713329
+      _irl-2_7: -7582786537451773718
+      _irl-2_8: -4052429143635863779
+      _irl-2_9: -3478400523403393101
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
