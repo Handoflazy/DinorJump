@@ -20,7 +20,7 @@ public class JumpState : MoveState
     }
     protected override void HandleJumpReleased()
     {
-        if(rb2d.velocity.y>0.2 * player.MovementData.jumpForce)
+        if(rb2d.velocity.y> Data.jumpHangTimeThreshold)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
         }
@@ -50,56 +50,40 @@ public class JumpState : MoveState
         if (Mathf.Abs(rb2d.velocity.y) < Data.jumpHangTimeThreshold)
         {
             SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
-            Debug.Log("HANG");
         }
-        else if (rb2d.velocity.y <0)
+        else if (rb2d.velocity.y < 0)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
         }
-        
-     
+
+
     }
 
     protected override void MoveAgent(Vector2 Input)
     {
         float targetSpeed = Data.runMaxSpeed;
-        if (Mathf.Abs(Input.x) > 0 && currentSpeed >= 0)
+        if (Mathf.Abs(Input.x) > 0 && Data.currentSpeed >= 0)
         {
             oldMovementInput = Input;
-            currentSpeed += Data.runAcceleration * Data.runMaxSpeed * Time.deltaTime;
+            Data.currentSpeed += Data.runAcceleration * Data.runMaxSpeed * Time.deltaTime;
 
         }
         else
         {
-            currentSpeed -= Data.runDeccelAmount * Data.runMaxSpeed * Time.deltaTime;
+            Data.currentSpeed -= Data.runDeccelAmount * Data.runMaxSpeed * Time.deltaTime;
 
         }
         if(Mathf.Abs(rb2d.velocity.y) < Data.jumpHangTimeThreshold)
         {
 
-            currentSpeed *= Data.jumpHangAccelerationMult;
+            Data.currentSpeed *= Data.jumpHangAccelerationMult;
             targetSpeed *= Data.jumpHangMaxSpeedMult;
         }
-        currentSpeed = Mathf.Clamp(currentSpeed, 0, targetSpeed);
+        Data.currentSpeed = Mathf.Clamp(Data.currentSpeed, 0, targetSpeed);
 
-        rb2d.velocity = new Vector2(oldMovementInput.x * currentSpeed, rb2d.velocity.y);
+        rb2d.velocity = new Vector2(oldMovementInput.x * Data.currentSpeed, rb2d.velocity.y);
 
       
-    }
-    protected override void HandleJumpPressed()
-    {
-       //if(!player.MovementData.doubleJump)
-       // {
-
-       //     DoubleJump();
-       //     player.MovementData.doubleJump = true;
-
-            
-       // }
-    }
-    public void SetGravityScale(float scale)
-    {
-        rb2d.gravityScale = scale;
     }
 
 }

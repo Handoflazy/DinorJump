@@ -16,10 +16,9 @@ public class FallState : MoveState
         base.EnterState();
         SetGravityScale(Data.gravityScale * Data.fallGravityMult);
         player.ID.playerEvents.OnSwitchAnimation(AnimationType.fall);
-    }
+    } 
     public override void StateUpdate()
     {
-
         MoveAgent(newMovementInput);
         rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Max(rb2d.velocity.y, -Data.maxFallSpeed));
         if (player.groundedDetector.IsGrounded&&rb2d.velocity.y <0.01f)
@@ -49,23 +48,11 @@ public class FallState : MoveState
         SetGravityScale(Data.fastFallGravityMult);
         rb2d.velocity = Vector2.down;
     }
-    public void SetGravityScale(float scale)
-    {
-        rb2d.gravityScale = scale;
-    }
     protected override void ExitState()
     {
         SetGravityScale(Data.gravityScale);
     }
-    protected override void HandleJumpPressed()
-    {
-        //if (!player.MovementData.doubleJump)
-        //{
-
-        //    DoubleJump();
-        //   player.MovementData.doubleJump = true;
-        //}
-    }
+  
     protected void DoubleJump()
     {
         rb2d.velocity = new Vector2(rb2d.velocity.x,0);

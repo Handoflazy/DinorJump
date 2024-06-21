@@ -1,13 +1,15 @@
 ﻿using Vector2 = UnityEngine.Vector2;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine;
 
 public class AgentInputs : PlayerSystem, PlayerControls.IMainActions
 {
     PlayerControls inputActions;
-    private Vector2 movementInput = Vector2.zero;
 
-    public UnityEvent<Vector2> OnMove;
+    [field:SerializeField]
+    public Vector2 MovementVector { get;private set; }
+
 
     protected override void Awake()
     {
@@ -21,14 +23,13 @@ public class AgentInputs : PlayerSystem, PlayerControls.IMainActions
     }
     private void Update()
     {
-        player.ID.playerEvents.OnMove?.Invoke(movementInput);
-        OnMove?.Invoke(movementInput);
+        this.MovementVector = inputActions.Main.Movement.ReadValue<Vector2>();
+        player.ID.playerEvents.OnMove?.Invoke(MovementVector);
     }
     public void OnMovement(InputAction.CallbackContext context)
     {
-        movementInput = (context.ReadValue<Vector2>());
-        player.ID.playerEvents.OnMove?.Invoke(movementInput);
-        //OnMove?.Invoke(movementInput);
+        this.MovementVector = (context.ReadValue<Vector2>());
+        player.ID.playerEvents.OnMove?.Invoke(MovementVector);
     }
 
     public void OnJump(InputAction.CallbackContext context)

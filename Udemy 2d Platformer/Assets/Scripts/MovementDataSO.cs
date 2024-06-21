@@ -1,11 +1,19 @@
 
+using System.ComponentModel;
 using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "MovementData", menuName = "Agent/MovementData")]
 public class MovementDataSO : ScriptableObject
 {
-    [Header("Gravity")]
+    [Header("Parameter")]
+    public bool doubleJump;
+    [ReadOnlyInspector]
+    public float currentSpeed;
+
+
+    [Space(20)]
+    [Header("Gravity")] 
     [HideInInspector] public float gravityStrength; //Downwards force (gravity) needed for the desired jumpHeight and jumpTimeToApex.
     [HideInInspector] public float gravityScale; //Strength of the player's gravity as a multiplier of gravity (set in ProjectSettings/Physics2D).
                                                  //Also the value the player's rigidbody2D.gravityScale is set to.
@@ -36,7 +44,6 @@ public class MovementDataSO : ScriptableObject
     [Header("Jump")]
     public float jumpHeight; //Height of the player's jump
     public float jumpTimeToApex; //Time between applying the jump force and reaching the desired jump height. These values also control the player's gravity and jump force.
-    public bool doubleJump;
 
     [HideInInspector] public float jumpForce; //The actual force applied (upwards) to the player when they jump.
 
@@ -71,7 +78,6 @@ public class MovementDataSO : ScriptableObject
     {
         //Calculate gravity strength using the formula (gravity = -2 * jumpHeight / timeToJumpApex^2) 
         gravityStrength = -(2 * jumpHeight) / (jumpTimeToApex * jumpTimeToApex);
-        Debug.Log(Physics2D.gravity.y);
         //Calculate the rigidbody's gravity scale (ie: gravity strength relative to unity's gravity value, see project settings/Physics2D)
         gravityScale = gravityStrength / Physics2D.gravity.y;
 

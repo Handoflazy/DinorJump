@@ -7,9 +7,6 @@ public class MoveState : State
 {
 
     public MovementDataSO Data;
-
-
-    protected float currentSpeed = 0;
     protected Vector2 oldMovementInput = Vector2.zero;
     protected Vector2 newMovementInput = Vector2.zero;
 
@@ -21,6 +18,7 @@ public class MoveState : State
 
     protected override void EnterState()
     {
+        newMovementInput = Vector2.zero;
         player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.run);
     }
     public override void StateUpdate()
@@ -36,37 +34,41 @@ public class MoveState : State
         }
 
     }
+
     protected override void HandleJumpPressed()
     {
-
-        player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+        if(player.groundedDetector.IsGrounded)
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
     }
     protected override void HandleMove(Vector2 vector)
     {
-         newMovementInput = vector.normalized;
+          newMovementInput = vector.normalized;
     }
 
     protected virtual void MoveAgent(Vector2 Input)
     {
 
-        if (Mathf.Abs(Input.x) > 0 && currentSpeed >= 0)
+        if (Mathf.Abs(Input.x) > 0 && Data.currentSpeed >= 0)
         {
             oldMovementInput = Input;
-            currentSpeed += Data.runAcceleration * Data.runMaxSpeed * Time.deltaTime;
+            Data.currentSpeed += Data.runAcceleration * Data.runMaxSpeed * Time.deltaTime;
 
         }
         else
         {
-            currentSpeed -= Data.runDeccelAmount * Data.runMaxSpeed * Time.deltaTime;
+            Data.currentSpeed -= Data.runDeccelAmount * Data.runMaxSpeed * Time.deltaTime;
 
         }
 
-        currentSpeed = Mathf.Clamp(currentSpeed, 0, Data.runMaxSpeed);
+        Data.currentSpeed = Mathf.Clamp(Data.currentSpeed, 0, Data.runMaxSpeed);
 
-        rb2d.velocity = new Vector2(oldMovementInput.x * currentSpeed, rb2d.velocity.y);
+        rb2d.velocity = new Vector2(oldMovementInput.x * Data.currentSpeed, rb2d.velocity.y);
 
     }
-
+    public void SetGravityScale(float scale)
+    {
+        rb2d.gravityScale = scale;
+    }
 }
 
 

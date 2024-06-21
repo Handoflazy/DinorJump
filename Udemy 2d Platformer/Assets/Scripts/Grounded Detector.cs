@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
@@ -36,8 +36,8 @@ public class GroundedDetector : PlayerSystem
         RaycastHit2D hit = Physics2D.BoxCast(AgentCollider.bounds.center + new Vector3(boxCastXOffSet, boxCastYOffSet, 0), BoxSize, 0, Vector2.down, 0, grondMask);
         if (hit)
         {
-           
-            isGrounded = true;
+           if(hit.collider.IsTouching(AgentCollider)==true)// có interaction được hay không?? tương tu oncollision Enter 
+             isGrounded = true;
         }
         else
         {
