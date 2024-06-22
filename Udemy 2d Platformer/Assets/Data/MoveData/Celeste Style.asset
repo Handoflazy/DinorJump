@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c1f83142ad93043859908d76dd368a, type: 3}
   m_Name: Celeste Style
   m_EditorClassIdentifier: 
-  gravityStrength: -77.77777
-  gravityScale: 2.5925925
+  doubleJump: 0
+  currentSpeed: 0
+  climbSpeed: 6.97
+  gravityStrength: -72.84079
+  gravityScale: 2.4280264
   fallGravityMult: 1.5
   maxFallSpeed: 25
   fastFallGravityMult: 2
@@ -27,9 +30,8 @@ MonoBehaviour:
   deccelInAir: 0.65
   doConserveMomentum: 1
   jumpHeight: 3.5
-  jumpTimeToApex: 0.3
-  doubleJump: 0
-  jumpForce: 23.333332
+  jumpTimeToApex: 0.31
+  jumpForce: 22.580645
   jumpCutGravityMult: 2
   jumpHangGravityMult: 0.553
   jumpHangTimeThreshold: 1

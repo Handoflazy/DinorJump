@@ -10,7 +10,11 @@ public class MovementDataSO : ScriptableObject
     public bool doubleJump;
     [ReadOnlyInspector]
     public float currentSpeed;
+    [Space(20)]
 
+    [Header("Climb")]
+    [Range(0f, 10)]
+    public float climbSpeed;
 
     [Space(20)]
     [Header("Gravity")] 

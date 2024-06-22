@@ -7,6 +7,7 @@ public class AnimConsts : MonoBehaviour
     public const string PLAYER_RUN_PARAM = "OnRun";
     public const string PLAYER_IDLE_PARAM = "OnIdle";
     public const string PLAYER_JUMP_PARAM = "OnJump";
+    public const string PLAYER_CLIMB_PARAM = "OnClimb";
     public const string PLAYER_DEATH_PARAM = "OnDeath";
     public const string PLAYER_WALK_SPEED_PARAM = "speedWalk";
 

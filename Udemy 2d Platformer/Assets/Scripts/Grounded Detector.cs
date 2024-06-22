@@ -15,7 +15,7 @@ public class GroundedDetector : PlayerSystem
     [SerializeField]
     private Vector2 BoxSize;
     [SerializeField]
-    private LayerMask grondMask;
+    private LayerMask groundMask;
     public Color gizmozColorNotGrounded = Color.red, gizmozColorIsGrounded = Color.green;
     [SerializeField]
     private bool isGrounded = false;
@@ -33,7 +33,7 @@ public class GroundedDetector : PlayerSystem
 
     public void CheckGrounded()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(AgentCollider.bounds.center + new Vector3(boxCastXOffSet, boxCastYOffSet, 0), BoxSize, 0, Vector2.down, 0, grondMask);
+        RaycastHit2D hit = Physics2D.BoxCast(AgentCollider.bounds.center + new Vector3(boxCastXOffSet, boxCastYOffSet, 0), BoxSize, 0, Vector2.down, 0, groundMask);
         if (hit)
         {
            if(hit.collider.IsTouching(AgentCollider)==true)// có interaction được hay không?? tương tu oncollision Enter 

@@ -56,14 +56,6 @@ public class AgentAnimation : PlayerSystem
     //    }
 
     //}
-    private void JumpAnim()
-    {
-        if (!onGround) return;
-
-        onGround = false;
-        PlayAnimation(AnimationType.jump);
-
-    }
 
 
     public void PlayAnimation(AnimationType animationType)
@@ -91,6 +83,7 @@ public class AgentAnimation : PlayerSystem
                 SwitchAnimationState(AnimConsts.PLAYER_FAll_PARAM);
                 break;
             case AnimationType.climb:
+                SwitchAnimationState(AnimConsts.PLAYER_CLIMB_PARAM);
                 break;
             case AnimationType.land:
                 break;

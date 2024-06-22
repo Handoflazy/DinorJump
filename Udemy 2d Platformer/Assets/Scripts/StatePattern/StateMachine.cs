@@ -14,6 +14,7 @@ namespace DesignPatterns.State
         public MoveState walkState;
         public JumpState jumpState;
         public FallState fallState;
+        public ClimbingState climbState;
 
         public event Action<IState> stateChanged;
         public StateMachine(Player player)
@@ -23,6 +24,7 @@ namespace DesignPatterns.State
             this.walkState = new MoveState(player);
             this.jumpState = new JumpState(player);
             this.fallState = new FallState(player);
+            this.climbState = new ClimbingState(player);
         }
         public void Initialize(IState state)
         {

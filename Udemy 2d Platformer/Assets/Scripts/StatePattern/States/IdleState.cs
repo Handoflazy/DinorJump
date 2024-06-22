@@ -28,6 +28,11 @@ public class IdleState : State
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
         }
+        if (vector.y > 0 && player.climbingDetector.CanClimb)
+        {
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
+        }
+       
     }
     protected override void HandleJumpPressed()
     {

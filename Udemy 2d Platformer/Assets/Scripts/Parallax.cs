@@ -6,9 +6,8 @@ public class Parallax : MonoBehaviour
 {
     private Camera _camera;
     private Vector2 startPos;
-    [SerializeField,Range(0,1)]
-    private float offSetParralax = -0.15f;
-    private Vector2 travel =>(Vector2)_camera.transform.position-startPos;
+    [SerializeField,Range(-1,1)]
+    private float moveSpeed = 0.5f;
     private void Awake()
     {
         _camera = Camera.main;
@@ -19,6 +18,7 @@ public class Parallax : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position =   new Vector2((startPos +travel*offSetParralax).x,0);
+        Vector2 travel =(Vector2)_camera.transform.position - startPos;
+        transform.position = new Vector2((startPos +travel*moveSpeed).x,transform.position.y);
     }
 }

@@ -33,16 +33,22 @@ public class MoveState : State
             player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
         }
 
+
+
     }
 
     protected override void HandleJumpPressed()
     {
-        if(player.groundedDetector.IsGrounded)
+        if (player.groundedDetector.IsGrounded)
             player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
     }
     protected override void HandleMove(Vector2 vector)
     {
-          newMovementInput = vector.normalized;
+        newMovementInput = vector.normalized;
+        if (vector.y > 0 && player.climbingDetector.CanClimb)
+        {
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
+        }
     }
 
     protected virtual void MoveAgent(Vector2 Input)

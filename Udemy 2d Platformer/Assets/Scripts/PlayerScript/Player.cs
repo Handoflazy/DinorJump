@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [field:SerializeField]
     public MovementDataSO MovementData { get; private set; }
     public GroundedDetector groundedDetector;
+    public ClimbingDetector climbingDetector;
+
     public StateMachine playerStateMachine;
     private static Dictionary<int, GameObject> instances = new Dictionary<int, GameObject>();
 
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
         instances[instanceID] = gameObject;
         playerStateMachine = new StateMachine(this);
         groundedDetector = GetComponentInChildren<GroundedDetector>();
+        climbingDetector = GetComponentInChildren<ClimbingDetector>();
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
