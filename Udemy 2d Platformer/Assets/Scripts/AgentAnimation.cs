@@ -7,7 +7,7 @@ public class AgentAnimation : PlayerSystem
 {
 
     [SerializeField]
-    Animator anim;
+    Animator animator;
 
     private Rigidbody2D rb2d;
 
@@ -22,11 +22,15 @@ public class AgentAnimation : PlayerSystem
     {
         // player.ID.playerEvents.OnMove += OnUpdateDirection;
         player.ID.playerEvents.OnSwitchAnimation += PlayAnimation;
+        player.ID.playerEvents.OnStopAnimation += StopAnimation;
+        player.ID.playerEvents.OnStartAnimation += StartAnimation;
     }
     private void OnDisable()
     {
         //player.ID.playerEvents.OnMove -= OnUpdateDirection;
         player.ID.playerEvents.OnSwitchAnimation -= PlayAnimation;
+        player.ID.playerEvents.OnStopAnimation -= StopAnimation;
+        player.ID.playerEvents.OnStartAnimation -= StartAnimation;
     }
 
     private void Update()
@@ -40,6 +44,14 @@ public class AgentAnimation : PlayerSystem
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
+    }
+    private void StopAnimation()
+    {
+        animator.enabled = false;
+    }
+    private void StartAnimation()
+    {
+        animator.enabled = true;
     }
     //private void OnUpdateDirection(Vector2 direction)
     //{
@@ -60,7 +72,7 @@ public class AgentAnimation : PlayerSystem
 
     public void PlayAnimation(AnimationType animationType)
     {
-        if (anim == null)
+        if (animator == null)
             return;
         switch (animationType)
         {
@@ -94,7 +106,7 @@ public class AgentAnimation : PlayerSystem
     }
     public void SwitchAnimationState(string stateName)
     {
-        anim.Play(stateName, -1, 0f);
+        animator.Play(stateName, -1, 0f);
     }
 }
 

@@ -11,16 +11,20 @@ public class ClimbingState : MoveState
     protected override void EnterState()
     {
         base.EnterState();
-        rb2d.velocity = Vector3.zero;
+        rb2d.velocity = Vector2.zero;
         player.ID.playerEvents.OnSwitchAnimation(AnimationType.climb);
     }
 
     public override void StateUpdate()
     {
         MoveAgent(newMovementInput);
+        if(newMovementInput.y > 0)
+        {
+            Climp();
+        }
         if (player.climbingDetector.CanClimb == false)
         {
-            if(Mathf.Abs(rb2d.velocity.x)>0.1)
+            if(Mathf.Abs(rb2d.velocity.x)>0.1f)
                 player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
             else
             {
@@ -28,20 +32,38 @@ public class ClimbingState : MoveState
             }
         }
     }
+    protected override void HandleJumpPressed()
+    {
+        player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+    }
     private void Climp()
     {
         rb2d.velocity = new Vector2(rb2d.velocity.x, Data.climbSpeed);
     }
     protected override void HandleMove(Vector2 vector)
     {
+
         newMovementInput = vector.normalized;
-        if (vector.y <= 0)
+        if (vector.magnitude == 0)
+        {
+            rb2d.gravityScale = 0;
+            rb2d.velocity = Vector3.zero;
+            player.ID.playerEvents.OnStopAnimation?.Invoke();
+
+        }
+        else
+        {
+            player.ID.playerEvents.OnStartAnimation?.Invoke();
+        }
+        if(vector.y<0)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.idleState);
         }
-        else if(vector.y>0)
-        {
-            Climp();
-        }
+    }
+    protected override void ExitState()
+    {
+        base.ExitState();
+        rb2d.velocity = new Vector2(rb2d.velocity.x, Data.climbSpeed*2.3f);
+        player.ID.playerEvents.OnStartAnimation?.Invoke();
     }
 }

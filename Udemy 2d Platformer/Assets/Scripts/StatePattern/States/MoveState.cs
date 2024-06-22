@@ -18,8 +18,9 @@ public class MoveState : State
 
     protected override void EnterState()
     {
-        newMovementInput = Vector2.zero;
+        newMovementInput = Data.movementVector;
         player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.run);
+
     }
     public override void StateUpdate()
     {
@@ -28,7 +29,7 @@ public class MoveState : State
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.idleState);
         }
-        if (rb2d.velocity.y < 0 && !player.groundedDetector.IsGrounded)
+        else if (rb2d.velocity.y < 0 && !player.groundedDetector.IsGrounded)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
         }
@@ -74,6 +75,12 @@ public class MoveState : State
     public void SetGravityScale(float scale)
     {
         rb2d.gravityScale = scale;
+ 
+    }
+    protected override void ExitState()
+    {
+        SetGravityScale(Data.gravityScale);
+        Data.movementVector = newMovementInput;
     }
 }
 

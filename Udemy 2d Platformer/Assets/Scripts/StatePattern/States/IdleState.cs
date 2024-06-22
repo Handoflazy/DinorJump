@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DesignPatterns.State;
+using System.Numerics;
+using Vector2 = UnityEngine.Vector2;
 
 public class IdleState : State
 {
@@ -13,6 +15,10 @@ public class IdleState : State
     protected override void EnterState()
     {
        player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.idle);
+       if(player.groundedDetector.IsGrounded)
+        {
+            rb2d.velocity = Vector2.zero;
+        }
     }
     public override void StateUpdate()
     {
@@ -20,18 +26,19 @@ public class IdleState : State
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
         }
-
-    }
-    protected override void HandleMove(Vector2 vector)
-    {
-        if (Mathf.Abs(vector.x) > 0)
+        if (Mathf.Abs(player.MovementData.movementVector.x) > 0)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
         }
-        if (vector.y > 0 && player.climbingDetector.CanClimb)
+        else if (player.MovementData.movementVector.y > 0 && player.climbingDetector.CanClimb)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
         }
+    }
+    protected override void HandleMove(Vector2 vector)
+    {
+
+        player.MovementData.movementVector = vector;
        
     }
     protected override void HandleJumpPressed()

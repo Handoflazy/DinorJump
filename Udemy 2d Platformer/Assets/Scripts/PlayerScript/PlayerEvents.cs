@@ -10,6 +10,9 @@ public struct PlayerEvents
     public Action OnJumpPressed;
     public Action OnJumpReleased;
 
-
+    //Animation Events;
     public Action<AnimationType> OnSwitchAnimation;
+    public Action OnStopAnimation;
+    public Action OnStartAnimation;
+
 }

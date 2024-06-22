@@ -7,6 +7,7 @@ using UnityEngine;
 public class MovementDataSO : ScriptableObject
 {
     [Header("Parameter")]
+    public Vector2 movementVector;
     public bool doubleJump;
     [ReadOnlyInspector]
     public float currentSpeed;

@@ -14,6 +14,7 @@ public class JumpState : MoveState
     protected override void EnterState()
     {
         base.EnterState();
+        rb2d.velocity = Vector2.zero;
         player.ID.playerEvents.OnSwitchAnimation(AnimationType.jump);
         player.MovementData.doubleJump = false;
         Jump();
@@ -58,7 +59,14 @@ public class JumpState : MoveState
 
 
     }
-
+    protected override void HandleMove(Vector2 vector)
+    {
+        newMovementInput = vector.normalized;
+        //if (vector.y > 0 && player.climbingDetector.CanClimb)
+        //{
+        //    player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
+        //}
+    }
     protected override void MoveAgent(Vector2 Input)
     {
         float targetSpeed = Data.runMaxSpeed;

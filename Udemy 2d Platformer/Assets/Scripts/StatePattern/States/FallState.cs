@@ -33,26 +33,20 @@ public class FallState : MoveState
            
         }
     }
+
     protected override void HandleMove(Vector2 vector)
     {
-        base.HandleMove(vector);
-        if (vector.y == -1)
-        {
-            PerformFastFall();
-
-        }
+        newMovementInput = vector.normalized;
+        //if (vector.y > 0 && player.climbingDetector.CanClimb)
+        //{
+        //    player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
+        //}
     }
-
     private void PerformFastFall()
     {
         SetGravityScale(Data.fastFallGravityMult);
         rb2d.velocity = Vector2.down;
     }
-    protected override void ExitState()
-    {
-        SetGravityScale(Data.gravityScale);
-    }
-  
     protected void DoubleJump()
     {
         rb2d.velocity = new Vector2(rb2d.velocity.x,0);
