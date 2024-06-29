@@ -21,6 +21,11 @@ public class AgentInputs : PlayerSystem, PlayerControls.IMainActions
         inputActions.Main.SetCallbacks(this);
         inputActions.Main.Enable();
     }
+
+    private void Update()
+    {
+        player.ID.playerEvents.OnMove?.Invoke(MovementVector);
+    }
     public void OnMovement(InputAction.CallbackContext context)
     {
         this.MovementVector = (context.ReadValue<Vector2>());

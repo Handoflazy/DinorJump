@@ -2,13 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
+using UnityEditorInternal;
 using UnityEngine;
+using static UnityEngine.Random;
 
 namespace DesignPatterns.State
 {
-    public class StateMachine 
+    public class StateMachine: PlayerSystem
     {
+        [field:SerializeField]
         public IState CurrentState { get; private set; }
+
+        [Space(20)]
 
         public IdleState idleState;
         public MoveState walkState;
@@ -17,14 +22,23 @@ namespace DesignPatterns.State
         public ClimbingState climbState;
 
         public event Action<IState> stateChanged;
-        public StateMachine(Player player)
+        protected override void Awake()
         {
-            // create an instance for each state and pass in PlayerController
-            this.idleState = new IdleState(player);
-            this.walkState = new MoveState(player);
-            this.jumpState = new JumpState(player);
-            this.fallState = new FallState(player);
-            this.climbState = new ClimbingState(player);
+            base.Awake();
+                     
+            this.idleState = GetComponentInChildren<IdleState>();
+            this.walkState = GetComponentInChildren<MoveState>();
+            this.jumpState = GetComponentInChildren<JumpState>();
+            this.fallState = GetComponentInChildren < FallState>();
+            this.climbState = GetComponentInChildren<ClimbingState>();
+        }
+        private void Start()
+        {
+            CurrentState = idleState;
+            CurrentState.Enter();
+
+            // notify other objects that state has changed
+            stateChanged?.Invoke(CurrentState);
         }
         public void Initialize(IState state)
         {
@@ -41,7 +55,6 @@ namespace DesignPatterns.State
             CurrentState.Exit();
             CurrentState = nextState;
             nextState.Enter();
-
             // notify other objects that state has changed
             stateChanged?.Invoke(nextState);
         }

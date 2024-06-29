@@ -1,31 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 public class MoveState : State
 {
-
-    public MovementDataSO Data;
+    protected MovementDataSO Data;
     protected Vector2 oldMovementInput = Vector2.zero;
     protected Vector2 newMovementInput = Vector2.zero;
 
-    public MoveState(Player player) : base(player)
+    private void Start()
     {
-        this.player = player;
-        Data = player.MovementData;
-    }
+        Data = player.Data;
 
+    }
     protected override void EnterState()
     {
-        newMovementInput = Data.movementVector;
         player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.run);
+        player.ID.playerEvents.OnAnimationAction += () => OnAction.Invoke();
 
     }
     public override void StateUpdate()
     {
         MoveAgent(newMovementInput);
-        if (Mathf.Abs(rb2d.velocity.x) < 0.01f)
+        if (player.CanJump() && player.LastPressedJumpTime > 0)
+        {
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+        }
+        else if (Mathf.Abs(rb2d.velocity.x) < 0.01f)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.idleState);
         }
@@ -38,10 +41,9 @@ public class MoveState : State
 
     }
 
-    protected override void HandleJumpPressed()
+    protected override void HandleJumpPressed()  
     {
-        if (player.groundedDetector.IsGrounded)
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+        player.LastPressedJumpTime = Data.jumpInputBufferTime;
     }
     protected override void HandleMove(Vector2 vector)
     {
@@ -75,12 +77,12 @@ public class MoveState : State
     public void SetGravityScale(float scale)
     {
         rb2d.gravityScale = scale;
- 
+
     }
     protected override void ExitState()
     {
         SetGravityScale(Data.gravityScale);
-        Data.movementVector = newMovementInput;
+        player.ID.playerEvents.ResetAnimationEvents();
     }
 }
 

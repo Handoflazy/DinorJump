@@ -5,16 +5,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class State : IState
+public class State : MonoBehaviour, IState
 {
     protected Player player;
     protected Rigidbody2D rb2d;
-    public UnityEvent OnEnter, OnExit;
 
-    
-    public State(Player player)
+    [Header("State Event")]
+    public UnityEvent OnEnter;
+    public UnityEvent OnExit;
+
+
+    [Space(10)]
+    [Header("Animation Event")]
+    public UnityEvent OnAction;
+    public UnityEvent OnEnd;
+    private void Awake()
     {
-        this.player = player;
+       player =  transform.root.GetComponent<Player>();
         rb2d = player.gameObject.GetComponent<Rigidbody2D>();
     }
 

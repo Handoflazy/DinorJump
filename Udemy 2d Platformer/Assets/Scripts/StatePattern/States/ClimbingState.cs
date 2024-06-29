@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class ClimbingState : MoveState
 {
-    public ClimbingState(Player player) : base(player)
-    {
-        this.player = player;
-    }
     protected override void EnterState()
     {
-        base.EnterState();
         rb2d.velocity = Vector2.zero;
         player.ID.playerEvents.OnSwitchAnimation(AnimationType.climb);
+        player.ID.playerEvents.OnAnimationAction += () => OnAction?.Invoke();
     }
 
     public override void StateUpdate()
@@ -63,7 +59,8 @@ public class ClimbingState : MoveState
     protected override void ExitState()
     {
         base.ExitState();
-        rb2d.velocity = new Vector2(rb2d.velocity.x, Data.climbSpeed*2.3f);
+        rb2d.velocity = new Vector2(rb2d.velocity.x, Data.climbSpeed*2.5f);
         player.ID.playerEvents.OnStartAnimation?.Invoke();
+
     }
 }

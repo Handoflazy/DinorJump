@@ -6,17 +6,16 @@ using UnityEngine.Rendering;
 
 public class JumpState : MoveState
 {
-    public JumpState(Player player) : base(player)
-    {
-        this.player = player;
-    }
 
     protected override void EnterState()
     {
-        base.EnterState();
+        player.LastPressedJumpTime = 0;
         rb2d.velocity = Vector2.zero;
         player.ID.playerEvents.OnSwitchAnimation(AnimationType.jump);
-        player.MovementData.doubleJump = false;
+        player.IsJumping = true;
+        player.IsWallJumping = false;
+        player._isJumpCut = false;
+        player._isJumpFalling = false;
         Jump();
     }
     protected override void HandleJumpReleased()
@@ -28,7 +27,7 @@ public class JumpState : MoveState
     }
     protected void Jump()
     {
-        float force = player.MovementData.jumpForce;
+        float force = player.Data.jumpForce;
         if (rb2d.velocity.y < 0)
             force -= rb2d.velocity.y;
 
@@ -38,7 +37,7 @@ public class JumpState : MoveState
     protected void DoubleJump()
     {
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-        float force = player.MovementData.jumpForce;
+        float force = player.Data.jumpForce;
         if (rb2d.velocity.y < 0)
             force -= rb2d.velocity.y;
 
@@ -48,11 +47,7 @@ public class JumpState : MoveState
     public override void StateUpdate()
     {
         MoveAgent(newMovementInput);
-        if (Mathf.Abs(rb2d.velocity.y) < Data.jumpHangTimeThreshold)
-        {
-            SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
-        }
-        else if (rb2d.velocity.y < 0)
+        if (rb2d.velocity.y < 0)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
         }
@@ -81,17 +76,9 @@ public class JumpState : MoveState
             Data.currentSpeed -= Data.runDeccelAmount * Data.runMaxSpeed * Time.deltaTime;
 
         }
-        if(Mathf.Abs(rb2d.velocity.y) < Data.jumpHangTimeThreshold)
-        {
-
-            Data.currentSpeed *= Data.jumpHangAccelerationMult;
-            targetSpeed *= Data.jumpHangMaxSpeedMult;
-        }
         Data.currentSpeed = Mathf.Clamp(Data.currentSpeed, 0, targetSpeed);
 
         rb2d.velocity = new Vector2(oldMovementInput.x * Data.currentSpeed, rb2d.velocity.y);
-
-      
     }
 
 }

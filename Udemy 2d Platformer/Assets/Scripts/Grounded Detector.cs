@@ -19,7 +19,10 @@ public class GroundedDetector : PlayerSystem
     public Color gizmozColorNotGrounded = Color.red, gizmozColorIsGrounded = Color.green;
     [SerializeField]
     private bool isGrounded = false;
-
+    [Space(5)]
+    [SerializeField] private Transform _frontWallCheckPoint;
+    [SerializeField] private Transform _backWallCheckPoint;
+    [SerializeField] private Vector2 _wallCheckSize = new Vector2(0.5f, 1f);
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
 
     protected override void Awake()
@@ -33,7 +36,8 @@ public class GroundedDetector : PlayerSystem
 
     public void CheckGrounded()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(AgentCollider.bounds.center + new Vector3(boxCastXOffSet, boxCastYOffSet, 0), BoxSize, 0, Vector2.down, 0, groundMask);
+        RaycastHit2D hit = Physics2D.BoxCast(AgentCollider.bounds.center +
+            new Vector3(boxCastXOffSet, boxCastYOffSet, 0), BoxSize, 0, Vector2.down, 0, groundMask);
         if (hit)
         {
            if(hit.collider.IsTouching(AgentCollider)==true)// có interaction được hay không?? tương tu oncollision Enter 
@@ -43,6 +47,22 @@ public class GroundedDetector : PlayerSystem
         {
             isGrounded = false;
         }
+    }
+
+    public bool CheckLeftWall()
+    {
+        if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, groundMask) && !player.IsFacingRight)
+                    || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, groundMask) && player.IsFacingRight)) && !player.IsWallJumping)
+            return true;
+        return false;
+    }
+
+    public bool CheckRightWall()
+    {
+        if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, groundMask) && player.IsFacingRight)
+                    || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, groundMask) && !player.IsFacingRight)) && !player.IsWallJumping)
+            return true;
+        return false;
     }
 
     private void OnDrawGizmos()

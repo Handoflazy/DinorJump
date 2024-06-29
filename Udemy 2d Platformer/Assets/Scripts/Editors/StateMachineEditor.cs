@@ -1,8 +1,9 @@
-﻿using UnityEditor;
+﻿using DesignPatterns.State;
+using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Player))]
-public class PlayerEditor : Editor
+[CustomEditor(typeof(StateMachine))]
+public class StateMachineEditor : Editor
 {
     private string currentState = ""; // Khai báo bên ngoài OnInspectorGUI
 
@@ -20,8 +21,8 @@ public class PlayerEditor : Editor
     {
         if (EditorApplication.isPlaying && target != null) // Kiểm tra Play Mode và target
         {
-            Player sef = (Player)target;
-            currentState = sef.playerStateMachine?.CurrentState.ToString() ?? ""; // Cập nhật liên tục
+            StateMachine sef = (StateMachine)target;
+            currentState = sef.CurrentState.ToString() ?? ""; // Cập nhật liên tục
             Repaint(); // Vẽ lại Inspector
         }
     }
@@ -29,7 +30,7 @@ public class PlayerEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        EditorGUILayout.LabelField("Current State:", currentState); // Hiển thị giá trị cập nhật
+        EditorGUILayout.LabelField("Current State:", currentState.ToUpper());// Hiển thị giá trị cập nhật
         serializedObject.ApplyModifiedProperties();
     }
 }

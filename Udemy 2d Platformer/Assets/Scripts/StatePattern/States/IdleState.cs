@@ -7,42 +7,45 @@ using Vector2 = UnityEngine.Vector2;
 
 public class IdleState : State
 {
-    public IdleState(Player player) : base(player)
-    {
-        this.player = player;
-    }
 
     protected override void EnterState()
     {
-       player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.idle);
-       if(player.groundedDetector.IsGrounded)
+        player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.idle);
+        if (player.groundedDetector.IsGrounded)
         {
             rb2d.velocity = Vector2.zero;
         }
     }
     public override void StateUpdate()
     {
-        if (rb2d.velocity.y < 0)
+        if(player.CanJump()&& player.LastPressedJumpTime > 0)
+        {
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+        }
+        else if (rb2d.velocity.y < 0 && !player.groundedDetector.IsGrounded)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
         }
-        if (Mathf.Abs(player.MovementData.movementVector.x) > 0)
+        else if(Mathf.Abs(rb2d.velocity.x) > 0.1f)
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
-        }
-        else if (player.MovementData.movementVector.y > 0 && player.climbingDetector.CanClimb)
-        {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
         }
     }
     protected override void HandleMove(Vector2 vector)
     {
 
-        player.MovementData.movementVector = vector;
-       
+        if (Mathf.Abs(vector.x) > 0 || Mathf.Abs(rb2d.velocity.x) > 0.1f)
+        {
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
+        }
+        else if (vector.y > 0 && player.climbingDetector.CanClimb)
+        {
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
+        }
+
     }
     protected override void HandleJumpPressed()
     {
-        player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+        player.LastPressedJumpTime = player.Data.jumpInputBufferTime;
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentAnimation : PlayerSystem
 {
@@ -9,42 +11,29 @@ public class AgentAnimation : PlayerSystem
     [SerializeField]
     Animator animator;
 
-    private Rigidbody2D rb2d;
 
-    private bool onGround = true;
+    private Rigidbody2D rb2d;
 
     protected override void Awake()
     {
         base.Awake();
-        rb2d = GetComponent<Rigidbody2D>();
+        rb2d = transform.root.GetComponent<Rigidbody2D>();
     }
     private void OnEnable()
     {
-        // player.ID.playerEvents.OnMove += OnUpdateDirection;
+        player.ID.playerEvents.OnMove += OnUpdateDirection;
         player.ID.playerEvents.OnSwitchAnimation += PlayAnimation;
         player.ID.playerEvents.OnStopAnimation += StopAnimation;
         player.ID.playerEvents.OnStartAnimation += StartAnimation;
     }
     private void OnDisable()
     {
-        //player.ID.playerEvents.OnMove -= OnUpdateDirection;
+        player.ID.playerEvents.OnMove -= OnUpdateDirection;
         player.ID.playerEvents.OnSwitchAnimation -= PlayAnimation;
         player.ID.playerEvents.OnStopAnimation -= StopAnimation;
         player.ID.playerEvents.OnStartAnimation -= StartAnimation;
     }
 
-    private void Update()
-    {
-        if (rb2d.velocity.x > 0.01f)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (rb2d.velocity.x < -0.01f)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-
-    }
     private void StopAnimation()
     {
         animator.enabled = false;
@@ -53,21 +42,20 @@ public class AgentAnimation : PlayerSystem
     {
         animator.enabled = true;
     }
-    //private void OnUpdateDirection(Vector2 direction)
-    //{
-    //    if (player.IsGrounded)
-    //    {
-    //        if (direction.x > 0)
-    //        {
-    //            transform.rotation = Quaternion.Euler(0, 0, 0);
-    //        }
-    //        else if (direction.x < 0)
-    //        {
-    //            transform.rotation = Quaternion.Euler(0, 180, 0);
-    //        }
-    //    }
+    private void OnUpdateDirection(Vector2 direction)
+    {
 
-    //}
+        if (direction.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (direction.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+
+    }
 
 
     public void PlayAnimation(AnimationType animationType)
@@ -107,6 +95,17 @@ public class AgentAnimation : PlayerSystem
     public void SwitchAnimationState(string stateName)
     {
         animator.Play(stateName, -1, 0f);
+    }
+
+
+    public void InvokeAnimationAction()
+    {
+        player.ID.playerEvents.OnAnimationAction?.Invoke();
+    }
+
+    public void InvokeAnimationEnd()
+    {
+        player.ID.playerEvents.OnAnimationEnd?.Invoke();
     }
 }
 
