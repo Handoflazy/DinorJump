@@ -22,7 +22,7 @@ public class JumpState : MoveState
     {
         if(rb2d.velocity.y> Data.jumpHangTimeThreshold)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Fall));
         }
     }
     protected void Jump()
@@ -49,7 +49,7 @@ public class JumpState : MoveState
         MoveAgent(newMovementInput);
         if (rb2d.velocity.y < 0)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Fall));
         }
 
 

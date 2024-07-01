@@ -3,7 +3,9 @@ using DesignPatterns.State;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using WeaponSystem;
 
 public class Player : MonoBehaviour
@@ -29,6 +31,9 @@ public class Player : MonoBehaviour
     //These are fields which can are public allowing for other sctipts to read them
     //but can only be privately written to.
     [field: SerializeField]
+
+    public bool IsDeath { get; private set; }
+    public bool IsAttacking { get; set; }
     public bool IsFacingRight { get; set; }
     public bool IsJumping { get; set; }
     public bool IsWallJumping { get; set; }
@@ -93,12 +98,13 @@ public class Player : MonoBehaviour
         climbingDetector = GetComponentInChildren<ClimbingDetector>();
         playerStateMachine = GetComponentInChildren<StateMachine>();
         agentWeapon = GetComponentInChildren<AgentWeaponManager>();
-        RB2D=GetComponent<Rigidbody2D>();
+        RB2D = GetComponent<Rigidbody2D>();
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
         IsFacingRight = true;
+        IsDeath = false;
 
     }
 
@@ -135,11 +141,11 @@ public class Player : MonoBehaviour
             LastOnGroundTime = Data.coyoteTime;
         }
         groundedDetector.CheckGrounded();
-        if(groundedDetector.CheckRightWall())
+        if (groundedDetector.CheckRightWall())
         {
             LastOnWallRightTime = Data.coyoteTime;
         }
-        if(groundedDetector.CheckLeftWall())
+        if (groundedDetector.CheckLeftWall())
         {
             LastOnWallLeftTime = Data.coyoteTime;
         }
@@ -157,13 +163,29 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-       
+
     }
 
-    internal void AgentDied()
+    public void AgentDied()
+    {
+        if (GetComponent<Damageable>().CurrentHealth > 0)
+        {
+            Respawn();
+            playerStateMachine.CurrentState.Respawn();
+            LastPressedJumpTime = 0;
+        }
+        else
+        {
+            Respawn();
+            playerStateMachine.CurrentState.Die();
+            IsDeath = true;
+        }
+    }
+
+    
+   public void Respawn()
     {
         ID.playerEvents.OnRespawnRequired?.Invoke(this.gameObject);
-        LastPressedJumpTime = 0;
     }
 
     public bool CanJump()

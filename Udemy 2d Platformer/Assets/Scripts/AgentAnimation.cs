@@ -11,13 +11,9 @@ public class AgentAnimation : PlayerSystem
     [SerializeField]
     Animator animator;
 
-
-    private Rigidbody2D rb2d;
-
     protected override void Awake()
     {
         base.Awake();
-        rb2d = transform.root.GetComponent<Rigidbody2D>();
     }
     private void OnEnable()
     {
@@ -44,7 +40,10 @@ public class AgentAnimation : PlayerSystem
     }
     private void OnUpdateDirection(Vector2 direction)
     {
-
+        if (player.IsAttacking||player.IsDeath)
+        {
+            return;
+        }
         if (direction.x > 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -65,13 +64,16 @@ public class AgentAnimation : PlayerSystem
         switch (animationType)
         {
             case AnimationType.die:
+                SwitchAnimationState(AnimConsts.PLAYER_DEATH_PARAM);
                 break;
             case AnimationType.hit:
+                SwitchAnimationState(AnimConsts.PLAYER_HIT_PARAM);
                 break;
             case AnimationType.idle:
                 SwitchAnimationState(AnimConsts.PLAYER_IDLE_PARAM);
                 break;
             case AnimationType.attack:
+                SwitchAnimationState(AnimConsts.PLAYER_ATTACK_PARAM);
                 break;
             case AnimationType.run:
                 SwitchAnimationState(AnimConsts.PLAYER_RUN_PARAM);
@@ -86,6 +88,10 @@ public class AgentAnimation : PlayerSystem
                 SwitchAnimationState(AnimConsts.PLAYER_CLIMB_PARAM);
                 break;
             case AnimationType.land:
+                SwitchAnimationState(AnimConsts.PLAYER_LAND_PARAM);
+                break;
+            case AnimationType.respawn:
+                SwitchAnimationState(AnimConsts.PLAYER_RESPAWN_PARAM);
                 break;
             default:
                 break;
@@ -120,6 +126,7 @@ public enum AnimationType
     jump,
     fall,
     climb,
-    land
+    land,
+    respawn
 }
 

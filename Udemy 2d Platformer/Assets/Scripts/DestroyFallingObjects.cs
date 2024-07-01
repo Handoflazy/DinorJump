@@ -23,6 +23,11 @@ public class DestroyFallingObjects : MonoBehaviour
                 Destroy(collider.gameObject);
                 return;
             }
+            var damagable = player.GetComponent<Damageable>();
+            if(damagable != null)
+            {
+                damagable.GetHit(1);
+            }
             player.AgentDied();
         }    
     }

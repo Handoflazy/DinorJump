@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using static UnityEngine.UI.Image;
 
 namespace WeaponSystem
 {
@@ -10,12 +12,17 @@ namespace WeaponSystem
         public float attackRange = 2;
         public override bool CanBeUsed(bool isGrounded)
         {
-            throw new System.NotImplementedException();
+            if(isGrounded)
+            {
+                return true;
+            }
+            return false;
         }
 
         public override void PerformAttack(Player player, LayerMask hitableMask, Vector3 direction)
         {
-           RaycastHit2D hit = Physics2D.Raycast(player.agentWeapon.transform.position,direction,attackRange,hitableMask);
+            
+            RaycastHit2D hit = Physics2D.Raycast(player.agentWeapon.transform.position,direction,attackRange,hitableMask);
             if (hit.collider)
             {
                 foreach (var hittable in hit.collider.GetComponents<IHittable>())

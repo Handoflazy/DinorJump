@@ -20,15 +20,11 @@ public class IdleState : State
     {
         if(player.CanJump()&& player.LastPressedJumpTime > 0)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Jump));
         }
         else if (rb2d.velocity.y < 0 && !player.groundedDetector.IsGrounded)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
-        }
-        else if(Mathf.Abs(rb2d.velocity.x) > 0.1f)
-        {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Fall));
         }
     }
     protected override void HandleMove(Vector2 vector)
@@ -36,13 +32,20 @@ public class IdleState : State
 
         if (Mathf.Abs(vector.x) > 0 || Mathf.Abs(rb2d.velocity.x) > 0.1f)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Move));
         }
         else if (vector.y > 0 && player.climbingDetector.CanClimb)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Climb));
         }
 
+    }
+    protected override void HandleAttack()
+    {
+        if (player.agentWeapon.CanIUseWeapon(player.groundedDetector.IsGrounded))
+        {
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Attack));
+        }
     }
     protected override void HandleJumpPressed()
     {

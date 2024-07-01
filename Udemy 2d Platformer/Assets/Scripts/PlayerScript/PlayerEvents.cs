@@ -5,7 +5,7 @@ using UnityEngine;
 
 public struct PlayerEvents
 {
-    public Action OnAttack;
+    public Action OnAttackPressed;
     public Action<Vector2> OnMove;
     public Action OnJumpPressed;
     public Action OnJumpReleased;
@@ -20,8 +20,18 @@ public struct PlayerEvents
     //Spawn Events
 
     public Action<GameObject> OnRespawnRequired;
+    public Action OnPlayerdied;
 
-    //
+    //Weapon Events
+
+    public Action OnUseWeapon;
+
+    //PlayerUI Events
+    public Action<int> OnInitializeMaxHealth;
+    public Action<int> OnHealthValueChange;
+
+   
+
     public void ResetAnimationEvents()
     {
         OnAnimationAction = null;

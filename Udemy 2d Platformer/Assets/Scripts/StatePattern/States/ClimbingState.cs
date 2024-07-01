@@ -7,8 +7,7 @@ public class ClimbingState : MoveState
     protected override void EnterState()
     {
         rb2d.velocity = Vector2.zero;
-        player.ID.playerEvents.OnSwitchAnimation(AnimationType.climb);
-        player.ID.playerEvents.OnAnimationAction += () => OnAction?.Invoke();
+        player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.climb);
     }
 
     public override void StateUpdate()
@@ -21,16 +20,16 @@ public class ClimbingState : MoveState
         if (player.climbingDetector.CanClimb == false)
         {
             if(Mathf.Abs(rb2d.velocity.x)>0.1f)
-                player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
+                player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Move));
             else
             {
-                player.playerStateMachine.TransitionTo(player.playerStateMachine.idleState);
+                player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Idle));
             }
         }
     }
     protected override void HandleJumpPressed()
     {
-        player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+        player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Jump));
     }
     private void Climp()
     {
@@ -53,7 +52,7 @@ public class ClimbingState : MoveState
         }
         if(vector.y<0)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.idleState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Idle));
         }
     }
     protected override void ExitState()

@@ -10,5 +10,9 @@ namespace DesignPatterns.State
         void StateUpdate();
         void StateFixedUpdate();
         void Exit();
+        void GetHit();
+        void Die();
+
+        void Respawn();
     }
 }

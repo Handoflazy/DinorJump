@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEditorInternal;
 using UnityEngine;
@@ -8,29 +9,39 @@ using static UnityEngine.Random;
 
 namespace DesignPatterns.State
 {
-    public class StateMachine: PlayerSystem
+    public class StateMachine : PlayerSystem
     {
-        [field:SerializeField]
+        [field: SerializeField]
         public IState CurrentState { get; private set; }
 
         [Space(20)]
 
-        public IdleState idleState;
-        public MoveState walkState;
-        public JumpState jumpState;
-        public FallState fallState;
-        public ClimbingState climbState;
+        private IdleState idleState;
+        private MoveState walkState;
+        private JumpState jumpState;
+        private FallState fallState;
+        private ClimbingState climbState;
+        private AttackState attackState;
+        private LandState landState;
+        private GetHitState getHitState;
+        private DieState dieState;
+        private RespawnState respawnState;
 
-        public event Action<IState> stateChanged;
+        private event Action<IState> stateChanged;
         protected override void Awake()
         {
             base.Awake();
-                     
+
             this.idleState = GetComponentInChildren<IdleState>();
             this.walkState = GetComponentInChildren<MoveState>();
             this.jumpState = GetComponentInChildren<JumpState>();
-            this.fallState = GetComponentInChildren < FallState>();
+            this.fallState = GetComponentInChildren<FallState>();
             this.climbState = GetComponentInChildren<ClimbingState>();
+            this.attackState = GetComponentInChildren<AttackState>();
+            this.landState = GetComponentInChildren<LandState>();
+            getHitState = GetComponentInChildren<GetHitState>();
+            dieState = GetComponentInChildren<DieState>();
+            respawnState = GetComponentInChildren<RespawnState>();
         }
         private void Start()
         {
@@ -58,6 +69,21 @@ namespace DesignPatterns.State
             // notify other objects that state has changed
             stateChanged?.Invoke(nextState);
         }
+        public IState GetState(StateType stateType)
+            => stateType switch
+            {
+                StateType.Idle => idleState,
+                StateType.Fall => fallState,
+                StateType.Attack => attackState,
+                StateType.Climb => climbState,
+                StateType.Jump => jumpState,
+                StateType.Move => walkState,
+                StateType.Land => landState,
+                StateType.GetHit =>getHitState,
+                StateType.Die => dieState,
+                StateType.Respawn => respawnState,
+                _ => throw new System.Exception("State not define" + stateType.ToString())
+            };
 
         // allow the StateMachine to update this state
         public void Update()
@@ -69,10 +95,21 @@ namespace DesignPatterns.State
         }
         public void FixedUpdate()
         {
-            if(CurrentState != null)
+            if (CurrentState != null)
             {
                 CurrentState.StateFixedUpdate();
             }
         }
+
+        public void GetHit()
+        {
+            CurrentState.GetHit();
+        }
+
     }
+}
+public enum StateType
+{
+    Idle, Move, Jump, Fall, Climb, Attack, GetHit, Die,Land,Respawn
+
 }

@@ -5,17 +5,22 @@ using UnityEngine.Rendering;
 
 public class FallState : MoveState
 {
-    
+    private bool fallAtFullSpeed =  false;
     protected override void EnterState()
     {
         SetGravityScale(Data.gravityScale * Data.fallGravityMult);
         player.ID.playerEvents.OnSwitchAnimation(AnimationType.fall);
+        fallAtFullSpeed = false;
     } 
     public override void StateUpdate()
     {
 
         MoveAgent(newMovementInput);
         rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Max(rb2d.velocity.y, -Data.maxFallSpeed));
+        if(rb2d.velocity.y== -Data.maxFallSpeed)
+        {
+            fallAtFullSpeed=true;
+        }
         if (Mathf.Abs(rb2d.velocity.y) < Data.jumpHangTimeThreshold)
         {
             SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
@@ -26,18 +31,21 @@ public class FallState : MoveState
         }
         if (player.CanJump() && player.LastPressedJumpTime > 0)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Jump));
         }
         else if (player.groundedDetector.IsGrounded&&rb2d.velocity.y <0.01f)
         {
-            if (Mathf.Abs(rb2d.velocity.x) > 0.1f)
-            {
-                player.playerStateMachine.TransitionTo(player.playerStateMachine.walkState);
 
+            if (fallAtFullSpeed)
+            {
+                player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Land));
             }
+            else if(Mathf.Abs(newMovementInput.x)>0)
+                player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Move));
             else
-                player.playerStateMachine.TransitionTo(player.playerStateMachine.idleState);
-           
+            {
+                player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Idle));
+            }
         }
     }
 

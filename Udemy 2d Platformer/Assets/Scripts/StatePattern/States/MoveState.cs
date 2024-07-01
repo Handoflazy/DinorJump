@@ -18,7 +18,6 @@ public class MoveState : State
     protected override void EnterState()
     {
         player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.run);
-        player.ID.playerEvents.OnAnimationAction += () => OnAction.Invoke();
 
     }
     public override void StateUpdate()
@@ -26,15 +25,15 @@ public class MoveState : State
         MoveAgent(newMovementInput);
         if (player.CanJump() && player.LastPressedJumpTime > 0)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.jumpState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Jump));
         }
         else if (Mathf.Abs(rb2d.velocity.x) < 0.01f)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.idleState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Idle));
         }
         else if (rb2d.velocity.y < 0 && !player.groundedDetector.IsGrounded)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.fallState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Fall));
         }
 
 
@@ -50,9 +49,17 @@ public class MoveState : State
         newMovementInput = vector.normalized;
         if (vector.y > 0 && player.climbingDetector.CanClimb)
         {
-            player.playerStateMachine.TransitionTo(player.playerStateMachine.climbState);
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Climb));
         }
     }
+    protected override void HandleAttack()
+    {
+        if (player.agentWeapon.CanIUseWeapon(player.groundedDetector.IsGrounded))
+        {
+            player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Attack));
+        }
+    }
+    
 
     protected virtual void MoveAgent(Vector2 Input)
     {
@@ -82,7 +89,6 @@ public class MoveState : State
     protected override void ExitState()
     {
         SetGravityScale(Data.gravityScale);
-        player.ID.playerEvents.ResetAnimationEvents();
     }
 }
 

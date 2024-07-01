@@ -6,21 +6,21 @@ using UnityEngine.Events;
 
 namespace WeaponSystem
 {
-    public class AgentWeaponManager : MonoBehaviour
+    public class AgentWeaponManager : PlayerSystem
     {
         SpriteRenderer spriteRenderer;
         private WeaponStorage weaponStorage;
         public UnityEvent<Sprite> OnWeaponSwap;
         public UnityEvent OnMulipleWeapons;
         public UnityEvent OnWeaponPickUp;
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             weaponStorage  = new WeaponStorage();
             spriteRenderer = GetComponent<SpriteRenderer>();
             ToggleWeaponVisiblity(false);
         }
-
-        private void ToggleWeaponVisiblity(bool v)
+        public void ToggleWeaponVisiblity(bool v)
         {
             if (v)
             {
@@ -71,5 +71,6 @@ namespace WeaponSystem
         {
             return weaponStorage.GetPlayerWeaponNames();
         }
+        
     }
 }

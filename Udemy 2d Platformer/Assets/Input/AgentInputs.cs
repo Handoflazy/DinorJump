@@ -50,7 +50,7 @@ public class AgentInputs : PlayerSystem, PlayerControls.IMainActions
     {
          if(context.phase == InputActionPhase.Performed)
         {
-            player.ID.playerEvents.OnAttack?.Invoke();
+            player.ID.playerEvents.OnAttackPressed?.Invoke();
         }
     }
 }

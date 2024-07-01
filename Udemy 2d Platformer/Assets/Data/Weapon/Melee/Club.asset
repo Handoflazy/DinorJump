@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Club
   m_EditorClassIdentifier: 
   ID: 101
-  WeaponName: 
+  WeaponName: Club
   weaponDamage: 1
   weaponSprite: {fileID: 21300000, guid: dc1a5260470ab9d43a040c4e9c89bead, type: 3}
   weaponSwingSound: {fileID: 8300000, guid: 40cc8e129a7bc3f4ba7ee3a2fe40db4e, type: 3}
