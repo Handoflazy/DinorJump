@@ -19,12 +19,12 @@ namespace WeaponSystem
             return false;
         }
 
-        public override void PerformAttack(Player player, LayerMask hitableMask, Vector3 direction)
+        public override void PerformAttack(Agent player, LayerMask hitableMask, Vector3 direction)
         {
-            
             RaycastHit2D hit = Physics2D.Raycast(player.agentWeapon.transform.position,direction,attackRange,hitableMask);
             if (hit.collider)
             {
+    
                 foreach (var hittable in hit.collider.GetComponents<IHittable>())
                 {
                     hittable.GetHit(player.gameObject, weaponDamage);

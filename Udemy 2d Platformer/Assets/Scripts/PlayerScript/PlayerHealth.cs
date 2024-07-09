@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerHealth : Damageable
 {
-    private Player agent;
+    private Agent agent;
     private void Awake()
     {
-        agent = transform.root.GetComponent<Player>();
+        agent = transform.root.GetComponent<Agent>();
     }
     // Start is called before the first frame update
     private void OnEnable()
@@ -30,7 +30,7 @@ public class PlayerHealth : Damageable
     }
     public void OutOfLife()
     {
-        Application.Quit();
+        agent.AgentDied();
     }
     
 }

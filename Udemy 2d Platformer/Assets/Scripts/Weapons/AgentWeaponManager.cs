@@ -6,12 +6,12 @@ using UnityEngine.Events;
 
 namespace WeaponSystem
 {
-    public class AgentWeaponManager : PlayerSystem
+    public class AgentWeaponManager : AgentSystem
     {
         SpriteRenderer spriteRenderer;
         private WeaponStorage weaponStorage;
         public UnityEvent<Sprite> OnWeaponSwap;
-        public UnityEvent OnMulipleWeapons;
+     
         public UnityEvent OnWeaponPickUp;
         protected override void Awake()
         {
@@ -20,6 +20,15 @@ namespace WeaponSystem
             spriteRenderer = GetComponent<SpriteRenderer>();
             ToggleWeaponVisiblity(false);
         }
+        private void OnEnable()
+        {
+            agent.ID.playerEvents.OnWeaponChange += SwapWeapon;
+        }
+        private void OnDisable()
+        {
+            agent.ID.playerEvents.OnWeaponChange -= SwapWeapon;
+        }
+
         public void ToggleWeaponVisiblity(bool v)
         {
             if (v)
@@ -38,7 +47,7 @@ namespace WeaponSystem
         public void SwapWeaponSprite(Sprite weaponSprite)
         {
             spriteRenderer.sprite = weaponSprite;
-            OnWeaponSwap?.Invoke(weaponSprite);
+            agent.ID.playerEvents.OnWeaponSwap?.Invoke(weaponSprite);
         }
         public void SwapWeapon()
         {
@@ -52,7 +61,7 @@ namespace WeaponSystem
         {
             weaponStorage.AddWeaponData(weaponData);
             if(weaponStorage.WeaponCount ==2)
-                OnMulipleWeapons?.Invoke();
+                agent.ID.playerEvents.OnMulipleWeapons?.Invoke();
             SwapWeaponSprite(weaponData.weaponSprite);
         }
         public void PickUpWeapon(WeaponData weaponData)

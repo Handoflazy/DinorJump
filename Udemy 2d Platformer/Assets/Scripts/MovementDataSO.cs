@@ -6,13 +6,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MovementData", menuName = "Agent/MovementData")]
 public class MovementDataSO : ScriptableObject
 {
+
+
+
+
     [Header("Parameter")]
     [ReadOnlyInspector]
+    public Vector2 MoveVector;
     public float currentSpeed;
     [Space(20)]
 
     [Header("Climb")]
-    [Range(0f, 10)]
+    [Range(0f, 100)]
     public float climbSpeed;
 
     [Space(20)]

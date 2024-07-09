@@ -5,7 +5,7 @@ using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AgentAnimation : PlayerSystem
+public class AgentAnimation : AgentSystem
 {
 
     [SerializeField]
@@ -17,17 +17,17 @@ public class AgentAnimation : PlayerSystem
     }
     private void OnEnable()
     {
-        player.ID.playerEvents.OnMove += OnUpdateDirection;
-        player.ID.playerEvents.OnSwitchAnimation += PlayAnimation;
-        player.ID.playerEvents.OnStopAnimation += StopAnimation;
-        player.ID.playerEvents.OnStartAnimation += StartAnimation;
+        agent.ID.playerEvents.OnMoveInput += OnUpdateDirection;
+        agent.ID.playerEvents.OnSwitchAnimation += PlayAnimation;
+        agent.ID.playerEvents.OnStopAnimation += StopAnimation;
+        agent.ID.playerEvents.OnStartAnimation += StartAnimation;
     }
     private void OnDisable()
     {
-        player.ID.playerEvents.OnMove -= OnUpdateDirection;
-        player.ID.playerEvents.OnSwitchAnimation -= PlayAnimation;
-        player.ID.playerEvents.OnStopAnimation -= StopAnimation;
-        player.ID.playerEvents.OnStartAnimation -= StartAnimation;
+        agent.ID.playerEvents.OnMoveInput -= OnUpdateDirection;
+        agent.ID.playerEvents.OnSwitchAnimation -= PlayAnimation;
+        agent.ID.playerEvents.OnStopAnimation -= StopAnimation;
+        agent.ID.playerEvents.OnStartAnimation -= StartAnimation;
     }
 
     private void StopAnimation()
@@ -40,22 +40,21 @@ public class AgentAnimation : PlayerSystem
     }
     private void OnUpdateDirection(Vector2 direction)
     {
-        if (player.IsAttacking||player.IsDeath)
+        if (agent.IsAttacking||agent.IsDeath)
         {
             return;
         }
         if (direction.x > 0)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.parent.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (direction.x < 0)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.parent.rotation = Quaternion.Euler(0, 180, 0);
         }
 
 
     }
-
 
     public void PlayAnimation(AnimationType animationType)
     {
@@ -87,9 +86,6 @@ public class AgentAnimation : PlayerSystem
             case AnimationType.climb:
                 SwitchAnimationState(AnimConsts.PLAYER_CLIMB_PARAM);
                 break;
-            case AnimationType.land:
-                SwitchAnimationState(AnimConsts.PLAYER_LAND_PARAM);
-                break;
             case AnimationType.respawn:
                 SwitchAnimationState(AnimConsts.PLAYER_RESPAWN_PARAM);
                 break;
@@ -106,12 +102,12 @@ public class AgentAnimation : PlayerSystem
 
     public void InvokeAnimationAction()
     {
-        player.ID.playerEvents.OnAnimationAction?.Invoke();
+        agent.ID.playerEvents.OnAnimationAction?.Invoke();
     }
 
     public void InvokeAnimationEnd()
     {
-        player.ID.playerEvents.OnAnimationEnd?.Invoke();
+        agent.ID.playerEvents.OnAnimationEnd?.Invoke();
     }
 }
 
@@ -126,7 +122,6 @@ public enum AnimationType
     jump,
     fall,
     climb,
-    land,
     respawn
 }
 

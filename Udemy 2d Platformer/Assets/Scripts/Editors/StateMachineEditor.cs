@@ -1,4 +1,4 @@
-﻿using DesignPatterns.State;
+﻿using DesignPatterns.States;
 using UnityEditor;
 using UnityEngine;
 

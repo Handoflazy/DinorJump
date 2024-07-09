@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c1f83142ad93043859908d76dd368a, type: 3}
   m_Name: Celeste Style
   m_EditorClassIdentifier: 
-  currentSpeed: 0
-  climbSpeed: 7.52
+  MoveVector: {x: 0, y: 0}
+  currentSpeed: 6.1177793
+  climbSpeed: 6.5
   gravityStrength: -52.59698
   gravityScale: 1.7532327
   fallGravityMult: 1.5

@@ -9,7 +9,7 @@ public class GiveAgentWeapon : MonoBehaviour
 
     private void Start()
     {
-        Player player = GetComponent<Player>();
+        Agent player = GetComponent<Agent>();
         foreach (var item in weapons)
         {
             player.agentWeapon.AddWeaponData(item);

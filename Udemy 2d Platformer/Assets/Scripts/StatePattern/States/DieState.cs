@@ -1,3 +1,4 @@
+using DesignPatterns;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class DieState : State
     public float TimeToWaitBeforeRespawn = 2;
     protected override void EnterState()
     {
+        rb2d.GetComponent<Collider2D>().enabled = false;
         player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.die);
         player.ID.playerEvents.OnAnimationEnd += WaitBeforeDieAction;
 

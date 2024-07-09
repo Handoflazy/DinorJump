@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class GroundedDetector : PlayerSystem
+public class GroundedDetector : AgentSystem
 {
 
     public Collider2D AgentCollider;
@@ -19,10 +19,10 @@ public class GroundedDetector : PlayerSystem
     public Color gizmozColorNotGrounded = Color.red, gizmozColorIsGrounded = Color.green;
     [SerializeField]
     private bool isGrounded = false;
-    [Space(5)]
-    [SerializeField] private Transform _frontWallCheckPoint;
-    [SerializeField] private Transform _backWallCheckPoint;
-    [SerializeField] private Vector2 _wallCheckSize = new Vector2(0.5f, 1f);
+    //[Space(5)]
+    //[SerializeField] private Transform _frontWallCheckPoint;
+    //[SerializeField] private Transform _backWallCheckPoint;
+    //[SerializeField] private Vector2 _wallCheckSize = new Vector2(0.5f, 1f);
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
 
     protected override void Awake()
@@ -49,21 +49,21 @@ public class GroundedDetector : PlayerSystem
         }
     }
 
-    public bool CheckLeftWall()
-    {
-        if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, groundMask) && !player.IsFacingRight)
-                    || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, groundMask) && player.IsFacingRight)) && !player.IsWallJumping)
-            return true;
-        return false;
-    }
+    //public bool CheckLeftWall()
+    //{
+    //    if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, groundMask) && !player.IsFacingRight)
+    //                || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, groundMask) && player.IsFacingRight)) && !player.IsWallJumping)
+    //        return true;
+    //    return false;
+    //}
 
-    public bool CheckRightWall()
-    {
-        if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, groundMask) && player.IsFacingRight)
-                    || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, groundMask) && !player.IsFacingRight)) && !player.IsWallJumping)
-            return true;
-        return false;
-    }
+    //public bool CheckRightWall()
+    //{
+    //    if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, groundMask) && player.IsFacingRight)
+    //                || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, groundMask) && !player.IsFacingRight)) && !player.IsWallJumping)
+    //        return true;
+    //    return false;
+    //}
 
     private void OnDrawGizmos()
     {

@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public struct PlayerEvents
 {
     public Action OnAttackPressed;
-    public Action<Vector2> OnMove;
+    public Action<Vector2> OnMoveInput;
     public Action OnJumpPressed;
     public Action OnJumpReleased;
 
@@ -25,12 +26,14 @@ public struct PlayerEvents
     //Weapon Events
 
     public Action OnUseWeapon;
+    public Action OnMulipleWeapons;
 
     //PlayerUI Events
     public Action<int> OnInitializeMaxHealth;
+    public Action<Sprite> OnWeaponSwap;
     public Action<int> OnHealthValueChange;
 
-   
+    public Action OnWeaponChange;
 
     public void ResetAnimationEvents()
     {

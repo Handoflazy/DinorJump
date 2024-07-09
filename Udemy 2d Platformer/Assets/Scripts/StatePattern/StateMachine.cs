@@ -7,22 +7,21 @@ using UnityEditorInternal;
 using UnityEngine;
 using static UnityEngine.Random;
 
-namespace DesignPatterns.State
+namespace DesignPatterns.States
 {
-    public class StateMachine : PlayerSystem
+    public class StateMachine : AgentSystem
     {
         [field: SerializeField]
         public IState CurrentState { get; private set; }
 
         [Space(20)]
-
+        
         private IdleState idleState;
         private MoveState walkState;
         private JumpState jumpState;
         private FallState fallState;
         private ClimbingState climbState;
         private AttackState attackState;
-        private LandState landState;
         private GetHitState getHitState;
         private DieState dieState;
         private RespawnState respawnState;
@@ -38,7 +37,6 @@ namespace DesignPatterns.State
             this.fallState = GetComponentInChildren<FallState>();
             this.climbState = GetComponentInChildren<ClimbingState>();
             this.attackState = GetComponentInChildren<AttackState>();
-            this.landState = GetComponentInChildren<LandState>();
             getHitState = GetComponentInChildren<GetHitState>();
             dieState = GetComponentInChildren<DieState>();
             respawnState = GetComponentInChildren<RespawnState>();
@@ -63,6 +61,7 @@ namespace DesignPatterns.State
         // exit this state and enter another
         public void TransitionTo(IState nextState)
         {
+            if(nextState == null) return;
             CurrentState.Exit();
             CurrentState = nextState;
             nextState.Enter();
@@ -78,7 +77,6 @@ namespace DesignPatterns.State
                 StateType.Climb => climbState,
                 StateType.Jump => jumpState,
                 StateType.Move => walkState,
-                StateType.Land => landState,
                 StateType.GetHit =>getHitState,
                 StateType.Die => dieState,
                 StateType.Respawn => respawnState,

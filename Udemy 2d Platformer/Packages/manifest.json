@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.no-slopes.sprite-animations": "2.3.4",
     "com.unity.2d.animation": "9.1.0",
     "com.unity.2d.pixel-perfect": "5.0.3",
     "com.unity.2d.psdimporter": "8.0.4",
@@ -50,5 +51,14 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "OpenUPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.no-slopes.sprite-animations"
+      ]
+    }
+  ]
 }

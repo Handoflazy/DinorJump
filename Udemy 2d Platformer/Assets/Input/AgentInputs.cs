@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine;
 
-public class AgentInputs : PlayerSystem, PlayerControls.IMainActions
+public class AgentInputs : AgentSystem, PlayerControls.IMainActions
 {
     PlayerControls inputActions;
 
@@ -24,24 +24,23 @@ public class AgentInputs : PlayerSystem, PlayerControls.IMainActions
 
     private void Update()
     {
-        player.ID.playerEvents.OnMove?.Invoke(MovementVector);
+        agent.ID.playerEvents.OnMoveInput?.Invoke(MovementVector);
     }
     public void OnMovement(InputAction.CallbackContext context)
     {
         this.MovementVector = (context.ReadValue<Vector2>());
-        player.ID.playerEvents.OnMove?.Invoke(MovementVector);
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            player.ID.playerEvents.OnJumpPressed?.Invoke();
+            agent.ID.playerEvents.OnJumpPressed?.Invoke();
          
         }
         else if(context.phase == InputActionPhase.Canceled)
         {
-            player.ID.playerEvents.OnJumpReleased?.Invoke();
+            agent.ID.playerEvents.OnJumpReleased?.Invoke();
         }
       
     }
@@ -50,7 +49,15 @@ public class AgentInputs : PlayerSystem, PlayerControls.IMainActions
     {
          if(context.phase == InputActionPhase.Performed)
         {
-            player.ID.playerEvents.OnAttackPressed?.Invoke();
+            agent.ID.playerEvents.OnAttackPressed?.Invoke();
+        }
+    }
+
+    public void OnSwapWeapon(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Performed)
+        {
+            agent.ID.playerEvents.OnWeaponChange?.Invoke();
         }
     }
 }

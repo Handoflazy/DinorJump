@@ -18,7 +18,7 @@ namespace WeaponSystem
         }
 
         public abstract bool CanBeUsed(bool isGrounded);
-        public abstract void PerformAttack(Player player, LayerMask hitableMask, Vector3 direction);
+        public abstract void PerformAttack(Agent player, LayerMask hitableMask, Vector3 direction);
 
         public virtual void DrawWeaponGizmo(Vector3 origin, Vector3 direction)
         {
