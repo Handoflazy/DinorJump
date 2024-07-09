@@ -12,7 +12,14 @@ public class HooverAnimation : MonoBehaviour
     private float duration;
     private Tweener tweener;
     public Ease animationEase;
-
+    public bool PlayOnAwake = false;
+    private void Start()
+    {
+        if (PlayOnAwake)
+        {
+            PlayerAnimation();
+        }
+    }
     public void PlayerAnimation()
     {
         tweener = transform.DOMoveY(transform.position.y+ distance, duration).SetEase(animationEase).SetLoops(-1, LoopType.Yoyo);

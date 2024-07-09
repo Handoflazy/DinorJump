@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3871707657134186723}
   - component: {fileID: 6511767968468650515}
   - component: {fileID: 414299951022431738}
+  - component: {fileID: 630745531628501538}
   m_Layer: 3
   m_Name: Agent
   m_TagString: Player
@@ -381,6 +382,18 @@ MonoBehaviour:
   flashDelay: 0.1
   flashAlpha: 0.5
   immortalityTime: 2
+--- !u!114 &630745531628501538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930656447012918047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03a41736dc235c448674f6bcc2c541e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1467370349227207910
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,9 +856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnWeaponSwap:
-    m_PersistentCalls:
-      m_Calls: []
-  OnMulipleWeapons:
     m_PersistentCalls:
       m_Calls: []
   OnWeaponPickUp:

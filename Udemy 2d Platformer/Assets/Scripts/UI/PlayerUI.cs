@@ -20,6 +20,8 @@ public class PlayerUI : MonoBehaviour
         DinorSingleton.Instance.PlayerID.playerEvents.OnHealthValueChange += SetHealth;
         DinorSingleton.Instance.PlayerID.playerEvents.OnWeaponSwap += UpdateWeaponSprite;
         DinorSingleton.Instance.PlayerID.playerEvents.OnMulipleWeapons +=()=> weaponElementUI.ToggleWeaponTip(true);
+        DinorSingleton.Instance.PlayerID.playerEvents.OnPointsValueChange += SetPoints;
+
 
     }
     private void OnDisable()
@@ -28,6 +30,7 @@ public class PlayerUI : MonoBehaviour
         DinorSingleton.Instance.PlayerID.playerEvents.OnHealthValueChange -= SetHealth;
         DinorSingleton.Instance.PlayerID.playerEvents.OnWeaponSwap -= UpdateWeaponSprite;
         DinorSingleton.Instance.PlayerID.playerEvents.OnMulipleWeapons -= () => weaponElementUI.ToggleWeaponTip(false);
+        DinorSingleton.Instance.PlayerID.playerEvents.OnPointsValueChange -= SetPoints;
     }
     public void InitializeMaxHealth(int maxHealth)
     {

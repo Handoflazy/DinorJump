@@ -35,6 +35,11 @@ public struct PlayerEvents
 
     public Action OnWeaponChange;
 
+    //Player Events
+    public Action<int> OnPointsValueChange;
+    public Action OnPickUpPoints;
+
+
     public void ResetAnimationEvents()
     {
         OnAnimationAction = null;
