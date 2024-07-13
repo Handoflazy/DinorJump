@@ -138,11 +138,12 @@ public class Agent : MonoBehaviour
 
         #endregion
         #region COLLISION CHECKS
-        if (groundedDetector.IsGrounded)
+        if (groundedDetector && groundedDetector.IsGrounded)
         {
             LastOnGroundTime = Data.coyoteTime;
         }
-        groundedDetector.CheckGrounded();
+        if(groundedDetector)
+              groundedDetector.CheckGrounded();
         //if (groundedDetector.CheckRightWall())
         //{
         //    LastOnWallRightTime = Data.coyoteTime;

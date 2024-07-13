@@ -8,5 +8,6 @@ public class AgentSystem : MonoBehaviour
     protected virtual void Awake()
     {
         agent = transform.root.GetComponent<Agent>();
+        
     }
 }

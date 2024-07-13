@@ -10,6 +10,7 @@ public class AgentAnimation : AgentSystem
 
     [SerializeField]
     Animator animator;
+    public bool isFacingRight;
 
     protected override void Awake()
     {
@@ -47,6 +48,7 @@ public class AgentAnimation : AgentSystem
         if (direction.x > 0)
         {
             transform.parent.rotation = Quaternion.Euler(0, 0, 0);
+          
         }
         else if (direction.x < 0)
         {
