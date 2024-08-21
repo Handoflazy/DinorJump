@@ -33,11 +33,15 @@ public struct PlayerEvents
     public Action<Sprite> OnWeaponSwap;
     public Action<int> OnHealthValueChange;
 
+    public Action OnToggleMenu;
+
     public Action OnWeaponChange;
 
     //Player Events
     public Action<int> OnPointsValueChange;
     public Action OnPickUpPoints;
+
+    public Action OnResetInputAction;
 
 
     public void ResetAnimationEvents()

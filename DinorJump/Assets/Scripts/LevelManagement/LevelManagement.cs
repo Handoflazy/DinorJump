@@ -1,3 +1,4 @@
+using SVS.Level;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,17 @@ public class LevelManagement : MonoBehaviour
 {
     [SerializeField]
     private int level_1SceneBuildIndex, menuSceneBuildIndex, winSceneBuildIndex;
+
+    [SerializeField]
+    private bool ResetSaveData = false;
+
+    private void Awake()
+    {
+        if (ResetSaveData)
+        {
+            SaveSystem.ResetSaveData();
+        }
+    }
 
     public void RestartCurrentLevel()
     {

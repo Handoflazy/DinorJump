@@ -3,14 +3,21 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine;
 
-public class AgentInputs : AgentSystem, PlayerControls.IMainActions
+public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerControls.IMenuActions
 {
     PlayerControls inputActions;
 
-    [field:SerializeField]
-    public Vector2 MovementVector { get;private set; }
+    [field: SerializeField]
+    public Vector2 MovementVector { get; private set; }
 
-
+    private void OnEnable()
+    {
+        agent.ID.playerEvents.OnResetInputAction += ResetToMain;
+    }
+    private void OnDisable()
+    {
+        agent.ID.playerEvents.OnResetInputAction -= ResetToMain;
+    }
     protected override void Awake()
     {
         base.Awake();
@@ -18,13 +25,13 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions
     }
     private void Start()
     {
+        inputActions.Menu.SetCallbacks(this);
         inputActions.Main.SetCallbacks(this);
         inputActions.Main.Enable();
     }
 
     private void Update()
     {
-        
         agent.ID.playerEvents.OnMoveInput?.Invoke(MovementVector);
     }
     public void OnMovement(InputAction.CallbackContext context)
@@ -37,18 +44,18 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions
         if (context.phase == InputActionPhase.Performed)
         {
             agent.ID.playerEvents.OnJumpPressed?.Invoke();
-         
+
         }
-        else if(context.phase == InputActionPhase.Canceled)
+        else if (context.phase == InputActionPhase.Canceled)
         {
             agent.ID.playerEvents.OnJumpReleased?.Invoke();
         }
-      
+
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-         if(context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed)
         {
             agent.ID.playerEvents.OnAttackPressed?.Invoke();
         }
@@ -56,9 +63,36 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions
 
     public void OnSwapWeapon(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed)
         {
             agent.ID.playerEvents.OnWeaponChange?.Invoke();
         }
+    }
+
+    public void OnOpenInGameMenu(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            agent.ID.playerEvents.OnToggleMenu?.Invoke();
+            inputActions.Menu.Enable();
+            inputActions.Main.Disable();
+
+        }
+    }
+
+    public void OnExitInGameMenu(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            agent.ID.playerEvents.OnToggleMenu?.Invoke();
+            inputActions.Menu.Disable();
+            inputActions.Main.Enable();
+        }
+    }
+
+    private void ResetToMain()
+    {
+        inputActions.Menu.Disable();
+        inputActions.Main.Enable();
     }
 }

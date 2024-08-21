@@ -48,6 +48,12 @@ namespace WeaponSystem
             return WeaponDataList[currentWeaponIndex];
         }
 
+        public void ClearStorage()
+        {
+            WeaponDataList.Clear();
+            currentWeaponIndex = -1;
+        }
+
        
     }
 }

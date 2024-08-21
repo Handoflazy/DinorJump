@@ -41,7 +41,7 @@ namespace SVS.Level
         }
         public static void SaveWeapons(List<string> weaponNames)
         {
-            string data = JsonUtility.ToJson(weaponNames);
+            string data = JsonUtility.ToJson(new PlayerWeapons { playerWeapons = weaponNames}) ;
             PlayerPrefs.SetString(playerWeaponsKey, data);
         }
         public static List<string> LoadWeapons()
@@ -51,7 +51,7 @@ namespace SVS.Level
                 string data = PlayerPrefs.GetString(playerWeaponsKey);
                 if (data.Length > 0)
                 {
-                    return JsonUtility.FromJson<List<string>>(data);
+                    return JsonUtility.FromJson<PlayerWeapons>(data).playerWeapons;
                 }
             }
             return null;

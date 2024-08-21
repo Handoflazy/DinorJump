@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using System.Linq;
 namespace WeaponSystem
 {
     public class AgentWeaponManager : AgentSystem
@@ -57,7 +57,7 @@ namespace WeaponSystem
         }
         public void SwapWeapon()
         {
-            if (weaponStorage.WeaponCount < 0)
+            if (weaponStorage.WeaponCount < 2)
             {
                 return;
             }
@@ -87,6 +87,20 @@ namespace WeaponSystem
         {
             return weaponStorage.GetPlayerWeaponNames();
         }
+        public void ClearAllWeapon()
+        {
+            SwapWeaponSprite(null);
+            weaponStorage.ClearStorage();
+            if(transform.childCount > 0)
+            {
+                Destroy(transform.GetChild(0));
+            }
+            
 
+        }
+        public void DestroyAllChildren()
+        {
+            GetComponentsInChildren<Transform>().Where(t=> t!= transform).ToList().ForEach(t=>Destroy(t.gameObject)); 
+        }
     }
 }

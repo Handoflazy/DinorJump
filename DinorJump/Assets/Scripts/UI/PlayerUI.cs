@@ -8,6 +8,10 @@ public class PlayerUI : MonoBehaviour
     private HealthUI healthUI;
     private PointUI pointUI;
     private WeaponElementUI weaponElementUI;
+    [SerializeField]
+    private PlayerID playerID;
+
+    public GameObject menuPanel;
     private void Awake()
     {
         healthUI = GetComponentInChildren<HealthUI>();
@@ -16,21 +20,23 @@ public class PlayerUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        DinorSingleton.Instance.PlayerID.playerEvents.OnInitializeMaxHealth += InitializeMaxHealth;
-        DinorSingleton.Instance.PlayerID.playerEvents.OnHealthValueChange += SetHealth;
-        DinorSingleton.Instance.PlayerID.playerEvents.OnWeaponSwap += UpdateWeaponSprite;
-        DinorSingleton.Instance.PlayerID.playerEvents.OnMulipleWeapons +=()=> weaponElementUI.ToggleWeaponTip(true);
-        DinorSingleton.Instance.PlayerID.playerEvents.OnPointsValueChange += SetPoints;
+        playerID.playerEvents.OnInitializeMaxHealth += InitializeMaxHealth;
+        playerID.playerEvents.OnHealthValueChange += SetHealth;
+        playerID.playerEvents.OnWeaponSwap += UpdateWeaponSprite;
+        playerID.playerEvents.OnMulipleWeapons +=()=> weaponElementUI.ToggleWeaponTip(true);
+        playerID.playerEvents.OnPointsValueChange += SetPoints;
+        playerID.playerEvents.OnToggleMenu += ToggleInGameMenu;
 
 
     }
     private void OnDisable()
     {
-        DinorSingleton.Instance.PlayerID.playerEvents.OnInitializeMaxHealth -= InitializeMaxHealth;
-        DinorSingleton.Instance.PlayerID.playerEvents.OnHealthValueChange -= SetHealth;
-        DinorSingleton.Instance.PlayerID.playerEvents.OnWeaponSwap -= UpdateWeaponSprite;
-        DinorSingleton.Instance.PlayerID.playerEvents.OnMulipleWeapons -= () => weaponElementUI.ToggleWeaponTip(false);
-        DinorSingleton.Instance.PlayerID.playerEvents.OnPointsValueChange -= SetPoints;
+        playerID.playerEvents.OnInitializeMaxHealth -= InitializeMaxHealth;
+        playerID.playerEvents.OnHealthValueChange -= SetHealth;
+        playerID.playerEvents.OnWeaponSwap -= UpdateWeaponSprite;
+        playerID.playerEvents.OnMulipleWeapons -= () => weaponElementUI.ToggleWeaponTip(false);
+        playerID.playerEvents.OnPointsValueChange -= SetPoints;
+        playerID.playerEvents.OnToggleMenu -= ToggleInGameMenu;
     }
     public void InitializeMaxHealth(int maxHealth)
     {
@@ -49,4 +55,10 @@ public class PlayerUI : MonoBehaviour
     {
         weaponElementUI.UpdateWeaponImage(sprite);
     }
+
+    private void ToggleInGameMenu()
+    {
+        menuPanel.SetActive(!menuPanel.activeSelf);
+    }
+
 }

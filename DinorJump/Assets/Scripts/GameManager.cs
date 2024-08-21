@@ -53,7 +53,6 @@ namespace SVS.Level
 
         private void Start()
         {
-            LoadData();
             player.gameObject.SetActive(true);
             respawnManager.Respawn(player.gameObject);
             cameraManager.SetCameraTarget(player.transform);
@@ -66,6 +65,7 @@ namespace SVS.Level
             {
                 item.LoadData();
             }
+           // SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         public void ReloadEntity()

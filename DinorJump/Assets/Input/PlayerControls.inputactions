@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenInGameMenu",
+                    "type": "Button",
+                    "id": "3e361972-d0c9-40a9-9f3a-e16f7ce615e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -128,6 +137,45 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwapWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b2c8d6c-16e8-42cf-a7f2-872818caa1dc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInGameMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "525faecb-9d7f-4d5f-9dc1-3bf43f0b39b0",
+            "actions": [
+                {
+                    "name": "ExitInGameMenu",
+                    "type": "Button",
+                    "id": "38233595-21a8-456b-9cee-67a1166685d7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c361757f-42ea-4d21-9775-4373ac310598",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitInGameMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

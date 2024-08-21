@@ -62,6 +62,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInGameMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""3e361972-d0c9-40a9-9f3a-e16f7ce615e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,45 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""SwapWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b2c8d6c-16e8-42cf-a7f2-872818caa1dc"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInGameMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""525faecb-9d7f-4d5f-9dc1-3bf43f0b39b0"",
+            ""actions"": [
+                {
+                    ""name"": ""ExitInGameMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""38233595-21a8-456b-9cee-67a1166685d7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c361757f-42ea-4d21-9775-4373ac310598"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitInGameMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +212,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Main_Jump = m_Main.FindAction("Jump", throwIfNotFound: true);
         m_Main_Attack = m_Main.FindAction("Attack", throwIfNotFound: true);
         m_Main_SwapWeapon = m_Main.FindAction("SwapWeapon", throwIfNotFound: true);
+        m_Main_OpenInGameMenu = m_Main.FindAction("OpenInGameMenu", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_ExitInGameMenu = m_Menu.FindAction("ExitInGameMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +281,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_Jump;
     private readonly InputAction m_Main_Attack;
     private readonly InputAction m_Main_SwapWeapon;
+    private readonly InputAction m_Main_OpenInGameMenu;
     public struct MainActions
     {
         private @PlayerControls m_Wrapper;
@@ -237,6 +290,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Main_Jump;
         public InputAction @Attack => m_Wrapper.m_Main_Attack;
         public InputAction @SwapWeapon => m_Wrapper.m_Main_SwapWeapon;
+        public InputAction @OpenInGameMenu => m_Wrapper.m_Main_OpenInGameMenu;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +312,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SwapWeapon.started += instance.OnSwapWeapon;
             @SwapWeapon.performed += instance.OnSwapWeapon;
             @SwapWeapon.canceled += instance.OnSwapWeapon;
+            @OpenInGameMenu.started += instance.OnOpenInGameMenu;
+            @OpenInGameMenu.performed += instance.OnOpenInGameMenu;
+            @OpenInGameMenu.canceled += instance.OnOpenInGameMenu;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -274,6 +331,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SwapWeapon.started -= instance.OnSwapWeapon;
             @SwapWeapon.performed -= instance.OnSwapWeapon;
             @SwapWeapon.canceled -= instance.OnSwapWeapon;
+            @OpenInGameMenu.started -= instance.OnOpenInGameMenu;
+            @OpenInGameMenu.performed -= instance.OnOpenInGameMenu;
+            @OpenInGameMenu.canceled -= instance.OnOpenInGameMenu;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -291,11 +351,62 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public MainActions @Main => new MainActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
+    private readonly InputAction m_Menu_ExitInGameMenu;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ExitInGameMenu => m_Wrapper.m_Menu_ExitInGameMenu;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
+            @ExitInGameMenu.started += instance.OnExitInGameMenu;
+            @ExitInGameMenu.performed += instance.OnExitInGameMenu;
+            @ExitInGameMenu.canceled += instance.OnExitInGameMenu;
+        }
+
+        private void UnregisterCallbacks(IMenuActions instance)
+        {
+            @ExitInGameMenu.started -= instance.OnExitInGameMenu;
+            @ExitInGameMenu.performed -= instance.OnExitInGameMenu;
+            @ExitInGameMenu.canceled -= instance.OnExitInGameMenu;
+        }
+
+        public void RemoveCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IMainActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSwapWeapon(InputAction.CallbackContext context);
+        void OnOpenInGameMenu(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnExitInGameMenu(InputAction.CallbackContext context);
     }
 }

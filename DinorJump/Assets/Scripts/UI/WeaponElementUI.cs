@@ -12,7 +12,7 @@ public class WeaponElementUI : MonoBehaviour
     private GameObject weaponSwapTip;
 
     public UnityEvent SwapWeaponEvent, ToggleWeaponTipUI;
-    private void Start()
+    private void Awake()
     {
         if ((weaponImage == null))
         {
@@ -23,8 +23,9 @@ public class WeaponElementUI : MonoBehaviour
     }
     public void UpdateWeaponImage(Sprite sprite)
     {
-        if ((weaponImage.sprite == sprite))
+        if ((weaponImage.sprite == sprite&& sprite))
         {
+            weaponImage.enabled = true;
             return;
         }
         if (sprite != null)
@@ -33,9 +34,16 @@ public class WeaponElementUI : MonoBehaviour
             weaponImage.sprite = sprite;
             SwapWeaponEvent?.Invoke();
         }
+        else
+        {
+            weaponImage.enabled = false;
+
+        }
     }
     public void ToggleWeaponTip(bool val)
     {
+        if (!weaponSwapTip)
+            return;
         weaponSwapTip.SetActive(val);
         if(val)
         ToggleWeaponTipUI?.Invoke();
