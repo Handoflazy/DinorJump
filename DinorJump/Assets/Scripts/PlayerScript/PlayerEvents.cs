@@ -26,14 +26,14 @@ public struct PlayerEvents
     //Weapon Events
 
     public Action OnUseWeapon;
-    public Action OnMulipleWeapons;
+    public Action<bool> OnMulipleWeapons;
 
     //PlayerUI Events
     public Action<int> OnInitializeMaxHealth;
     public Action<Sprite> OnWeaponSwap;
     public Action<int> OnHealthValueChange;
 
-    public Action OnToggleMenu;
+    public Action<bool> OnToggleMenu;
 
     public Action OnWeaponChange;
 

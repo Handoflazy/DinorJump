@@ -67,7 +67,7 @@ namespace WeaponSystem
         {
             weaponStorage.AddWeaponData(weaponData);
             if (weaponStorage.WeaponCount == 2)
-                agent.ID.playerEvents.OnMulipleWeapons?.Invoke();
+                agent.ID.playerEvents.OnMulipleWeapons?.Invoke(true);
             SwapWeaponSprite(weaponData.weaponSprite);
         }
         public void PickUpWeapon(WeaponData weaponData)
@@ -91,7 +91,8 @@ namespace WeaponSystem
         {
             SwapWeaponSprite(null);
             weaponStorage.ClearStorage();
-            if(transform.childCount > 0)
+            agent.ID.playerEvents.OnMulipleWeapons?.Invoke(false);
+            if (transform.childCount > 0)
             {
                 Destroy(transform.GetChild(0));
             }

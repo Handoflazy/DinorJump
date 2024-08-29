@@ -23,7 +23,7 @@ public class PlayerUI : MonoBehaviour
         playerID.playerEvents.OnInitializeMaxHealth += InitializeMaxHealth;
         playerID.playerEvents.OnHealthValueChange += SetHealth;
         playerID.playerEvents.OnWeaponSwap += UpdateWeaponSprite;
-        playerID.playerEvents.OnMulipleWeapons +=()=> weaponElementUI.ToggleWeaponTip(true);
+        playerID.playerEvents.OnMulipleWeapons +=(bool val)=> weaponElementUI.ToggleWeaponTip(val);
         playerID.playerEvents.OnPointsValueChange += SetPoints;
         playerID.playerEvents.OnToggleMenu += ToggleInGameMenu;
 
@@ -34,7 +34,7 @@ public class PlayerUI : MonoBehaviour
         playerID.playerEvents.OnInitializeMaxHealth -= InitializeMaxHealth;
         playerID.playerEvents.OnHealthValueChange -= SetHealth;
         playerID.playerEvents.OnWeaponSwap -= UpdateWeaponSprite;
-        playerID.playerEvents.OnMulipleWeapons -= () => weaponElementUI.ToggleWeaponTip(false);
+        playerID.playerEvents.OnMulipleWeapons -= (bool val) => weaponElementUI.ToggleWeaponTip(val);
         playerID.playerEvents.OnPointsValueChange -= SetPoints;
         playerID.playerEvents.OnToggleMenu -= ToggleInGameMenu;
     }
@@ -56,9 +56,9 @@ public class PlayerUI : MonoBehaviour
         weaponElementUI.UpdateWeaponImage(sprite);
     }
 
-    private void ToggleInGameMenu()
+    private void ToggleInGameMenu(bool val)
     {
-        menuPanel.SetActive(!menuPanel.activeSelf);
+        menuPanel.SetActive(val);
     }
 
 }

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0946d8a011141b14ba905342f5c274c0, type: 3}
+  m_Name: Run
+  m_EditorClassIdentifier: 
+  _animationName: Run
+  _fps: 6
+  _isLoopable: 1
+  _cycle:
+    _animation: {fileID: 11400000}
+    _frames:
+    - _sprite: {fileID: -8707990098771797989, guid: d778aba77226b114284848fbd47ef254, type: 3}
+      _id: OnAction
+    - _sprite: {fileID: -6955675425571222386, guid: d778aba77226b114284848fbd47ef254, type: 3}
+      _id: 
+    - _sprite: {fileID: -718711566069861626, guid: d778aba77226b114284848fbd47ef254, type: 3}
+      _id: 
+    - _sprite: {fileID: 775870372377473646, guid: d778aba77226b114284848fbd47ef254, type: 3}
+      _id: 
+    - _sprite: {fileID: 6826533944304186791, guid: d778aba77226b114284848fbd47ef254, type: 3}
+      _id: 
+    - _sprite: {fileID: 184899889365238160, guid: d778aba77226b114284848fbd47ef254, type: 3}
+      _id: 
+    _identifiable: 1

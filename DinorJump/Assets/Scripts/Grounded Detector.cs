@@ -6,6 +6,9 @@ using UnityEngine;
 public class GroundedDetector : AgentSystem
 {
 
+    [SerializeField]
+    private bool flying = false;
+
     public Collider2D AgentCollider;
     [Header("Gizmoz parameters: ")]
     [Range(-2f, 2f)]
@@ -34,8 +37,18 @@ public class GroundedDetector : AgentSystem
         }
     }
 
+    public void ToggleFlying(bool val)
+    {
+        flying = val;
+    }
+
     public void CheckGrounded()
     {
+        if (flying)
+        {
+            IsGrounded = true;
+            return;
+        }
         RaycastHit2D hit = Physics2D.BoxCast(AgentCollider.bounds.center +
             new Vector3(boxCastXOffSet, boxCastYOffSet, 0), BoxSize, 0, Vector2.down, 0, groundMask);
         if (hit)

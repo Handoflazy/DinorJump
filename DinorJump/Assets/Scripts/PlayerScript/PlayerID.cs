@@ -6,5 +6,6 @@ using UnityEngine;
 public class PlayerID : ScriptableObject
 {
     public string playerName;
+    public int MaxHealth=3;
     public PlayerEvents playerEvents;
 }

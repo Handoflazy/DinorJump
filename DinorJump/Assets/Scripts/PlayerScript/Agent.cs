@@ -95,18 +95,19 @@ public class Agent : MonoBehaviour
                 return;
             }
         }
-
         instances[instanceID] = gameObject;
         groundedDetector = GetComponentInChildren<GroundedDetector>();
         climbingDetector = GetComponentInChildren<ClimbingDetector>();
         playerStateMachine = GetComponentInChildren<StateMachine>();
         agentWeapon = GetComponentInChildren<AgentWeaponManager>();
         RB2D = GetComponent<Rigidbody2D>();
-        if (gameObject.CompareTag("Player"))
-            DontDestroyOnLoad(gameObject);
+        //if (gameObject.CompareTag("Player"))
+        //    DontDestroyOnLoad(gameObject);
+        Data = Data.Clone();
     }
     private void Start()
     {
+       
         IsFacingRight = true;
         IsDeath = false;
 
@@ -170,10 +171,7 @@ public class Agent : MonoBehaviour
         else if (moveVector.x > 0)
             IsFacingRight = true;
     }
-    private void FixedUpdate()
-    {
-      
-    }
+
 
     public void AgentDied()
     {
@@ -187,27 +185,28 @@ public class Agent : MonoBehaviour
         else
         {
             playerStateMachine.CurrentState.Die();
+            if (this.CompareTag("Player"))
+            {
+                if (!IsDeath)
+                    ID.playerEvents.OnToggleMenu?.Invoke(true);
+            }
             IsDeath = true;
-            if(this.CompareTag("Player"))
-                 QuitApp();
+            
         }
     }
 
-   private async void QuitApp()
+     public void ResetState()
     {
-        await Task.Delay(2000);
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_WEBPLAYER
-        Application.OpenURL(webplayerQuitURL);
-#else
-        Application.Quit();
-#endif
-
+        if(playerStateMachine.CurrentState == playerStateMachine.GetState(StateType.Die))
+        {
+            playerStateMachine.TransitionTo(playerStateMachine.GetState(StateType.Idle));
+        }
+        GetComponent<Collider2D>().enabled = true;
+        IsDeath = false;
     }
     public async void Respawn()
     {
-        await Task.Delay(500);
+        await Task.Delay(500);  
         ID.playerEvents.OnRespawnRequired?.Invoke(this.gameObject);
         OnRespawn?.Invoke();
     }

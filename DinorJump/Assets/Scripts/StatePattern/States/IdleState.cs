@@ -33,6 +33,8 @@ namespace DesignPatterns.States
         {
 
             player.Data.MoveVector = vector;
+            if (!rb2d)
+                return;
             if (Mathf.Abs(vector.x) > 0 || Mathf.Abs(rb2d.velocity.x) > 0.1f)
             {
                 player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Move));

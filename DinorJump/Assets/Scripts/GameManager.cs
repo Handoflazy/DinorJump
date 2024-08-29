@@ -39,6 +39,7 @@ namespace SVS.Level
              respawnManager.Respawn(player.gameObject);
             if(cameraManager)
             cameraManager.SetCameraTarget(player.transform);
+            player.ResetState();
             LoadData();
         }
         private void OnEnable()

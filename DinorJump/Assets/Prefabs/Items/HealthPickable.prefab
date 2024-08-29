@@ -264,7 +264,7 @@ MonoBehaviour:
       m_Calls: []
   collisonMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
 --- !u!114 &2731242227486105892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,3 +292,4 @@ MonoBehaviour:
   distance: 0.38
   duration: 0.7
   animationEase: 2
+  PlayOnAwake: 0

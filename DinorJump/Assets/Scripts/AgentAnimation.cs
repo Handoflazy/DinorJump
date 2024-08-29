@@ -12,10 +12,6 @@ public class AgentAnimation : AgentSystem
     Animator animator;
     public bool isFacingRight;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
     private void OnEnable()
     {
         agent.ID.playerEvents.OnMoveInput += OnUpdateDirection;

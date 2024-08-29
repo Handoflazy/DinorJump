@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Plant
   m_EditorClassIdentifier: 
   playerName: 
+  MaxHealth: 3

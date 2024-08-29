@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0946d8a011141b14ba905342f5c274c0, type: 3}
+  m_Name: 'Destruction '
+  m_EditorClassIdentifier: 
+  _animationName: Destruction
+  _fps: 7
+  _isLoopable: 0
+  _cycle:
+    _animation: {fileID: 11400000}
+    _frames:
+    - _sprite: {fileID: 1617228174, guid: b0e77a43459b20445905c816cf6003f5, type: 3}
+      _id: 
+    - _sprite: {fileID: 598702116, guid: b0e77a43459b20445905c816cf6003f5, type: 3}
+      _id: 
+    - _sprite: {fileID: -478230056, guid: b0e77a43459b20445905c816cf6003f5, type: 3}
+      _id: 
+    - _sprite: {fileID: 226745851, guid: b0e77a43459b20445905c816cf6003f5, type: 3}
+      _id: Break
+    - _sprite: {fileID: 1928648575, guid: b0e77a43459b20445905c816cf6003f5, type: 3}
+      _id: 
+    - _sprite: {fileID: 42967238, guid: b0e77a43459b20445905c816cf6003f5, type: 3}
+      _id: 
+    - _sprite: {fileID: -562788396, guid: b0e77a43459b20445905c816cf6003f5, type: 3}
+      _id: 
+    - _sprite: {fileID: 1933787874, guid: b0e77a43459b20445905c816cf6003f5, type: 3}
+      _id: 
+    _identifiable: 1

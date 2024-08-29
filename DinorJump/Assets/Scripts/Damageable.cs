@@ -9,8 +9,6 @@ using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour, IHittable, ISaveData
 {
-
-    [SerializeField]
     protected int maxHealth;
 
     [SerializeField]
@@ -18,8 +16,9 @@ public class Damageable : MonoBehaviour, IHittable, ISaveData
 
     public UnityEvent<int> OnHealthValueChange;
     public UnityEvent<int> OnInitialMaxHealth;
-    private void Start()
+    protected virtual void Start()
     {
+        maxHealth = GetComponent<Agent>().ID.MaxHealth;
         Inititalize(maxHealth);
     }
     public int CurrentHealth
@@ -39,11 +38,16 @@ public class Damageable : MonoBehaviour, IHittable, ISaveData
 
     public virtual void GetHit(GameObject gameObject, int weaponDamage)
     {
+        if(currentHealth<=0)
+        {
+            return;
+        }
         GetHit(weaponDamage);
     }
 
     public void GetHit(int weaponDamage)
     {
+        
         CurrentHealth -= weaponDamage;
         if (CurrentHealth <= 0)
         {
@@ -66,6 +70,10 @@ public class Damageable : MonoBehaviour, IHittable, ISaveData
         maxHealth = health;
         OnInitialMaxHealth?.Invoke(maxHealth);
         CurrentHealth = health;
+    }
+    public float GetRatio()
+    {
+        return currentHealth / maxHealth;
     }
 
     public void SaveData()

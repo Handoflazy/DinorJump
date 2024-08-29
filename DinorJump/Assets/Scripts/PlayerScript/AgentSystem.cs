@@ -7,7 +7,6 @@ public class AgentSystem : MonoBehaviour
     protected Agent agent;
     protected virtual void Awake()
     {
-        agent = transform.root.GetComponent<Agent>();
-        
+        agent = transform.root.GetComponent<Agent>();;
     }
 }

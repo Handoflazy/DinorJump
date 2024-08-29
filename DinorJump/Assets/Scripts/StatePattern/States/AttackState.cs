@@ -21,7 +21,7 @@ namespace DesignPatterns.States
             player.agentWeapon.ToggleWeaponVisiblity(true);
             if(rb2d)
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-            player.ID.playerEvents.OnSwitchAnimation(AnimationType.attack);
+            player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.attack);
             player.ID.playerEvents.OnAnimationAction += PerformAttack;
             player.ID.playerEvents.OnAnimationEnd += CompleteAttack;
         }

@@ -24,7 +24,7 @@ public class Player : AgentSystem, ISaveData
         {
             foreach (string name in weaponName)
             {
-                // print("Loading weapon: " + weaponName);
+                print("Loading weapon: " + name);
                 var weapon = weaponManager.GetWeaponWithName(name);
                 agentWeaponManager.AddWeaponData(weapon);
             }
@@ -43,7 +43,6 @@ public class Player : AgentSystem, ISaveData
         List<string> weaponNames = agentWeaponManager.GetPlayerWeaponNames();
         if(weaponNames != null &&weaponNames.Count>0)
         {
-            print("Save" + weaponNames[0].ToString());
             SaveSystem.SaveWeapons(weaponNames);
         }
     }

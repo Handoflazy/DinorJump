@@ -18,8 +18,9 @@ public class PlayerHealth : Damageable
     {
         OnHealthValueChange.RemoveAllListeners();
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         Inititalize(maxHealth);
     }
     public override void Inititalize(int health)

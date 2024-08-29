@@ -11,6 +11,8 @@ public class DinorSingleton : MonoBehaviour
 
     public PlayerUI PlayerUI { get; private set; }
 
+    public BossHealthBar BossHealthBar { get; private set; }
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnLoadedScene;
@@ -23,7 +25,8 @@ public class DinorSingleton : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().buildIndex == 0)
         {
-            Destroy(FindObjectOfType<AgentInputs>().gameObject);
+            if(FindObjectOfType<AgentInputs>().gameObject)
+                Destroy(FindObjectOfType<AgentInputs>().gameObject);
             Destroy(gameObject);
         }
     }
@@ -36,9 +39,10 @@ public class DinorSingleton : MonoBehaviour
         }
         Instance = this;
         PlayerUI = GetComponentInChildren<PlayerUI>();
+        BossHealthBar = GetComponentInChildren<BossHealthBar>();
+        DontDestroyOnLoad(Instance);
 
 
 
-       DontDestroyOnLoad(Instance);
     }
 }

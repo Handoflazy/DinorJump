@@ -12,7 +12,7 @@ namespace DesignPatterns.States
 
         protected override void EnterState()
         {
-            player.ID.playerEvents.OnSwitchAnimation(AnimationType.respawn);
+            player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.respawn);
             WaitForTransition();
             rb2d.velocity = Vector3.zero;
 

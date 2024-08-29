@@ -73,7 +73,7 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            agent.ID.playerEvents.OnToggleMenu?.Invoke();
+            agent.ID.playerEvents.OnToggleMenu?.Invoke(true);
             inputActions.Menu.Enable();
             inputActions.Main.Disable();
 
@@ -84,7 +84,7 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            agent.ID.playerEvents.OnToggleMenu?.Invoke();
+            agent.ID.playerEvents.OnToggleMenu?.Invoke(false);
             inputActions.Menu.Disable();
             inputActions.Main.Enable();
         }

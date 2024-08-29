@@ -88,8 +88,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8746850766851455841}
   - component: {fileID: 2586215485968716544}
-  - component: {fileID: 6356516634376346087}
   - component: {fileID: 7138221772776332816}
+  - component: {fileID: 6356516634376346087}
   - component: {fileID: 649256737145666934}
   - component: {fileID: 3871707657134186723}
   - component: {fileID: 6511767968468650515}
@@ -151,41 +151,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &6356516634376346087
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930656447012918047}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.012385488, y: 0.057127357}
-  m_Size: {x: 0.50825715, y: 0.8140917}
-  m_Direction: 0
 --- !u!114 &7138221772776332816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +192,41 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   instanceID: 1
+--- !u!70 &6356516634376346087
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930656447012918047}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.012385488, y: 0.057127357}
+  m_Size: {x: 0.50825715, y: 0.8140917}
+  m_Direction: 0
 --- !u!114 &649256737145666934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2af83578e973154e886d9777e0df23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 4
   currentHealth: 0
   OnHealthValueChange:
     m_PersistentCalls:
@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6260c501465ee4aa61818bd21ac2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponManager: {fileID: 0}
   agentWeaponManager: {fileID: 7499042296524750403}
 --- !u!1 &1467370349227207910
 GameObject:
@@ -469,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81d7deeb9579324f90d7acfa9177dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -788,6 +790,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca5f06fa0eae8b4eadbbb363edd0e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleState: {fileID: 835033981292810132}
+  walkState: {fileID: 3100319605511638233}
+  jumpState: {fileID: 2383254373739810358}
+  fallState: {fileID: 5960882665199721941}
+  climbState: {fileID: 7226701963954341495}
+  attackState: {fileID: 4940033569759137940}
+  getHitState: {fileID: 1503616397258376081}
+  dieState: {fileID: 2541883360826854556}
+  respawnState: {fileID: 3036653557970695974}
+  flyState: {fileID: 0}
 --- !u!1 &3474817429355273786
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,10 +951,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41020af836cfe17468d6a8d0dfcd0be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flying: 0
   AgentCollider: {fileID: 3243467557594094960}
   boxCastYOffSet: -0.5
   boxCastXOffSet: -0.03
-  BoxSize: {x: 0.53, y: 0.14}
+  BoxSize: {x: 0.29, y: 0.14}
   groundMask:
     serializedVersion: 2
     m_Bits: 68160
@@ -1055,6 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2a7a71622f08d43a265ffb203ea0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -1522,6 +1536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b1f2ee5f1bee747847417f22828616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -1637,6 +1652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35d12f9920ee0742b610f7e11d904b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -1694,6 +1710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f263db949f64a4fb31f7c7e7e9baed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls:
@@ -1763,6 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa27c19ddc4688d4b992b7a920549e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls:
@@ -1832,6 +1850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81a65d4e39fa954ca9f634c2d3fa7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -1947,6 +1966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e8d795954f4b844af20f30ba115632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -2005,6 +2025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f0de7fd015ae141b9661cb82a2fff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []

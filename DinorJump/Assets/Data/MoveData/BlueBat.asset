@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c1f83142ad93043859908d76dd368a, type: 3}
+  m_Name: BlueBat
+  m_EditorClassIdentifier: 
+  MoveVector: {x: -1, y: 0}
+  currentSpeed: 3.28
+  climbSpeed: 7.52
+  gravityStrength: -52.59698
+  gravityScale: 1.7532327
+  fallGravityMult: 1.5
+  maxFallSpeed: 25
+  fastFallGravityMult: 2
+  maxFastFallSpeed: 30
+  runMaxSpeed: 3.28
+  runAcceleration: 1.79
+  runAccelAmount: 27.286585
+  runDecceleration: 1.44
+  runDeccelAmount: 21.951221
+  accelInAir: 0.65
+  deccelInAir: 0.65
+  doConserveMomentum: 1
+  jumpHeight: 4
+  jumpTimeToApex: 0.39
+  jumpForce: 20.512821
+  jumpCutGravityMult: 1
+  jumpHangGravityMult: 0.404
+  jumpHangTimeThreshold: 1
+  jumpHangAccelerationMult: 1.1
+  jumpHangMaxSpeedMult: 1.3
+  wallJumpForce: {x: 0, y: 0}
+  wallJumpRunLerp: 0
+  wallJumpTime: 0
+  doTurnOnWallJump: 0
+  slideSpeed: 0
+  slideAccel: 0
+  coyoteTime: 0.05
+  jumpInputBufferTime: 0.1
+  dashAmount: 0
+  dashSpeed: 0
+  dashSleepTime: 0
+  dashAttackTime: 0
+  dashEndTime: 0
+  dashEndSpeed: {x: 0, y: 0}
+  dashEndRunLerp: 0
+  dashRefillTime: 0
+  dashInputBufferTime: 0

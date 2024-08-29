@@ -9,7 +9,7 @@ public class FallState : MoveState
     protected override void EnterState()
     {
         SetGravityScale(Data.gravityScale * Data.fallGravityMult);
-        player.ID.playerEvents.OnSwitchAnimation(AnimationType.fall);
+        player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.fall);
     } 
     public override void StateUpdate()
     {

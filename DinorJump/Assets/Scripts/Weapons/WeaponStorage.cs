@@ -52,6 +52,7 @@ namespace WeaponSystem
         {
             WeaponDataList.Clear();
             currentWeaponIndex = -1;
+            
         }
 
        

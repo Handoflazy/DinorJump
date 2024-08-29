@@ -9,6 +9,7 @@ public class DieState : State
     public float TimeToWaitBeforeRespawn = 2;
     protected override void EnterState()
     {
+        SetGravityScale(2);
         rb2d.GetComponent<Collider2D>().enabled = false;
         player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.die);
         player.ID.playerEvents.OnAnimationEnd += WaitBeforeDieAction;
@@ -36,5 +37,14 @@ public class DieState : State
     public override void GetHit()
     {
        
+    }
+    public void SetGravityScale(float scale)
+    {
+        if (rb2d == null)
+            return;
+        if (scale == float.NaN)
+            rb2d.gravityScale = 1;
+        rb2d.gravityScale = scale;
+
     }
 }

@@ -6,9 +6,18 @@ using UnityEngine.Events;
 
 namespace SVS.AI
 {
-    public  class AIEnemy : AgentSystem
+    public class AIEnemy : AgentSystem
     {
-        public Vector2 MovementVector;
+        private Vector2 movementVector;
+        public Vector2 MovementVector
+        {
+            get { return movementVector; }
+            set
+            {
+                movementVector = value;
+                CallOnMovement(value); 
+            }
+        }
         internal void PerformAction(AIPatrollingEnemyBrain aIPatrollingEnemyBrain)
         {
             throw new NotImplementedException();
@@ -20,7 +29,7 @@ namespace SVS.AI
         public void CallJumpPressed()
         {
             agent.ID.playerEvents.OnJumpPressed?.Invoke();
-        } 
+        }
         public void CallJumpReleased()
         {
             agent.ID.playerEvents.OnJumpReleased?.Invoke();

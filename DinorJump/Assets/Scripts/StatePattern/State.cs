@@ -9,6 +9,7 @@ namespace DesignPatterns
 {
     public class State : MonoBehaviour, IState
     {
+        [SerializeField]
         protected Agent player;
         protected Rigidbody2D rb2d;
 
@@ -25,11 +26,12 @@ namespace DesignPatterns
         {
             player = transform.root.GetComponent<Agent>();
             rb2d = player.gameObject.GetComponent<Rigidbody2D>();
+            
         }
-
+       
         public void Enter()
         {
-
+            
             player.ID.playerEvents.OnAttackPressed += HandleAttack;
             player.ID.playerEvents.OnJumpPressed += HandleJumpPressed;
             player.ID.playerEvents.OnJumpReleased += HandleJumpReleased;

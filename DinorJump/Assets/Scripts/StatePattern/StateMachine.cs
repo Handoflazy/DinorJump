@@ -15,31 +15,14 @@ namespace DesignPatterns.States
         public IState CurrentState { get; private set; }
 
         [Space(20)]
-        
-        private IdleState idleState;
-        private MoveState walkState;
-        private JumpState jumpState;
-        private FallState fallState;
-        private ClimbingState climbState;
-        private AttackState attackState;
-        private GetHitState getHitState;
-        private DieState dieState;
-        private RespawnState respawnState;
+        [SerializeField]
+        private State idleState, walkState, jumpState, fallState, climbState, attackState
+        ,getHitState, dieState, respawnState, flyState;
 
         private event Action<IState> stateChanged;
         protected override void Awake()
         {
             base.Awake();
-
-            this.idleState = GetComponentInChildren<IdleState>();
-            this.walkState = GetComponentInChildren<MoveState>();
-            this.jumpState = GetComponentInChildren<JumpState>();
-            this.fallState = GetComponentInChildren<FallState>();
-            this.climbState = GetComponentInChildren<ClimbingState>();
-            this.attackState = GetComponentInChildren<AttackState>();
-            getHitState = GetComponentInChildren<GetHitState>();
-            dieState = GetComponentInChildren<DieState>();
-            respawnState = GetComponentInChildren<RespawnState>();
         }
         private void Start()
         {
