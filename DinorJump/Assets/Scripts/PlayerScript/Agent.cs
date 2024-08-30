@@ -101,8 +101,8 @@ public class Agent : MonoBehaviour
         playerStateMachine = GetComponentInChildren<StateMachine>();
         agentWeapon = GetComponentInChildren<AgentWeaponManager>();
         RB2D = GetComponent<Rigidbody2D>();
-        //if (gameObject.CompareTag("Player"))
-        //    DontDestroyOnLoad(gameObject);
+        if (gameObject.CompareTag("Player"))
+            DontDestroyOnLoad(gameObject);
         Data = Data.Clone();
     }
     private void Start()
@@ -202,6 +202,7 @@ public class Agent : MonoBehaviour
             playerStateMachine.TransitionTo(playerStateMachine.GetState(StateType.Idle));
         }
         GetComponent<Collider2D>().enabled = true;
+        GetComponent<AgentInputs>().enabled = true;
         IsDeath = false;
     }
     public async void Respawn()
