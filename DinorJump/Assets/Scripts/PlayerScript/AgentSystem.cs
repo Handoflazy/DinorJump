@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AgentSystem : MonoBehaviour
 {
-    protected Agent agent;
+    protected Agent Agent;
     protected virtual void Awake()
     {
-        agent = transform.root.GetComponent<Agent>();;
+        Agent = transform.root.GetComponent<Agent>();;
     }
 }

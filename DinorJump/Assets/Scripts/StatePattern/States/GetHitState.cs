@@ -8,13 +8,13 @@ namespace DesignPatterns.States
     {
         protected override void EnterState()
         {
-            player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.hit);
-            player.ID.playerEvents.OnAnimationEnd += CompleteAnimation;
+            player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.hit);
+            player.ID.PlayerEvents.OnAnimationEnd += CompleteAnimation;
         }
         private void CompleteAnimation()
         {
             player.playerStateMachine.TransitionTo(player.playerStateMachine.GetState(StateType.Idle));
-            player.ID.playerEvents.ResetAnimationEvents();
+            player.ID.PlayerEvents.ResetAnimationEvents();
         }
         #region HANDLE EVENTS
         protected override void HandleAttack()

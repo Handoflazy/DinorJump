@@ -8,7 +8,7 @@ public class ClimbingState : MoveState
     protected override void EnterState()
     {
         rb2d.velocity = Vector2.zero;
-        player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.climb);
+        player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.climb);
         rb2d.gravityScale = 0;
     }
 
@@ -43,12 +43,12 @@ public class ClimbingState : MoveState
         Data.MoveVector = vector;
         if (vector.magnitude == 0)
         {
-            player.ID.playerEvents.OnStopAnimation?.Invoke();
+            player.ID.PlayerEvents.OnStopAnimation?.Invoke();
 
         }
         else
         {
-            player.ID.playerEvents.OnStartAnimation?.Invoke();
+            player.ID.PlayerEvents.OnStartAnimation?.Invoke();
         }
         if(vector.y<0)
         {
@@ -59,7 +59,7 @@ public class ClimbingState : MoveState
     {
         base.ExitState();
         rb2d.velocity = new Vector2(rb2d.velocity.x, Data.climbSpeed*2.5f);
-        player.ID.playerEvents.OnStartAnimation?.Invoke();
+        player.ID.PlayerEvents.OnStartAnimation?.Invoke();
 
     }
 }

@@ -21,9 +21,9 @@ namespace DesignPatterns.States
             player.agentWeapon.ToggleWeaponVisiblity(true);
             if(rb2d)
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-            player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.attack);
-            player.ID.playerEvents.OnAnimationAction += PerformAttack;
-            player.ID.playerEvents.OnAnimationEnd += CompleteAttack;
+            player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.attack);
+            player.ID.PlayerEvents.OnAnimationAction += PerformAttack;
+            player.ID.PlayerEvents.OnAnimationEnd += CompleteAttack;
         }
         private void CompleteAttack()
         {
@@ -32,7 +32,7 @@ namespace DesignPatterns.States
 
         protected override void ExitState()
         {
-            player.ID.playerEvents.ResetAnimationEvents();
+            player.ID.PlayerEvents.ResetAnimationEvents();
             player.agentWeapon.ToggleWeaponVisiblity(false);
             player.IsAttacking = false;
         }
@@ -42,7 +42,7 @@ namespace DesignPatterns.States
                 return;
             OnWeaponSound?.Invoke(player.agentWeapon.GetCurrentWeapon().weaponSwingSound);
             player.agentWeapon.GetCurrentWeapon().PerformAttack(player, hittableLayermask, player.IsFacingRight ? Vector2.right : Vector2.left);
-            player.ID.playerEvents.OnAnimationAction -= PerformAttack;
+            player.ID.PlayerEvents.OnAnimationAction -= PerformAttack;
         }
 
         private void OnDrawGizmos()

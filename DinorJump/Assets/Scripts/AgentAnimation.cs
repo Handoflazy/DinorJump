@@ -1,30 +1,26 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AgentAnimation : AgentSystem
 {
 
-    [SerializeField]
-    Animator animator;
+    [SerializeField] Animator animator;
     public bool isFacingRight;
+    [SerializeField] private float kCrossFadeTime = 0.15f;
 
     private void OnEnable()
     {
-        agent.ID.playerEvents.OnMoveInput += OnUpdateDirection;
-        agent.ID.playerEvents.OnSwitchAnimation += PlayAnimation;
-        agent.ID.playerEvents.OnStopAnimation += StopAnimation;
-        agent.ID.playerEvents.OnStartAnimation += StartAnimation;
+        Agent.ID.PlayerEvents.OnMoveInput += OnUpdateDirection;
+        Agent.ID.PlayerEvents.OnSwitchAnimation += PlayAnimation;
+        Agent.ID.PlayerEvents.OnStopAnimation += StopAnimation;
+        Agent.ID.PlayerEvents.OnStartAnimation += StartAnimation;
     }
     private void OnDisable()
     {
-        agent.ID.playerEvents.OnMoveInput -= OnUpdateDirection;
-        agent.ID.playerEvents.OnSwitchAnimation -= PlayAnimation;
-        agent.ID.playerEvents.OnStopAnimation -= StopAnimation;
-        agent.ID.playerEvents.OnStartAnimation -= StartAnimation;
+        Agent.ID.PlayerEvents.OnMoveInput -= OnUpdateDirection;
+        Agent.ID.PlayerEvents.OnSwitchAnimation -= PlayAnimation;
+        Agent.ID.PlayerEvents.OnStopAnimation -= StopAnimation;
+        Agent.ID.PlayerEvents.OnStartAnimation -= StartAnimation;
     }
 
     private void StopAnimation()
@@ -37,7 +33,7 @@ public class AgentAnimation : AgentSystem
     }
     private void OnUpdateDirection(Vector2 direction)
     {
-        if (agent.IsAttacking||agent.IsDeath)
+        if (Agent.IsAttacking||Agent.IsDeath)
         {
             return;
         }
@@ -55,59 +51,64 @@ public class AgentAnimation : AgentSystem
 
     }
 
-    public void PlayAnimation(AnimationType animationType)
+    AnimationType currentAnimationType;
+
+    private void PlayAnimation(AnimationType animationType)
     {
-        if (animator == null)
+        if (animator == null|| currentAnimationType == animationType)
             return;
+        currentAnimationType = animationType;
         switch (animationType)
         {
            
             case AnimationType.die:
-                SwitchAnimationState(AnimConsts.PLAYER_DEATH_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_DEATH_STATE);
                 break;
             case AnimationType.hit:
-                SwitchAnimationState(AnimConsts.PLAYER_HIT_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_HIT_STATE);
                 break;
             case AnimationType.idle:
-                SwitchAnimationState(AnimConsts.PLAYER_IDLE_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_IDLE_STATE);
                 break;
             case AnimationType.attack:
-                SwitchAnimationState(AnimConsts.PLAYER_ATTACK_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_ATTACK_STATE);
                 break;
             case AnimationType.run:
-                SwitchAnimationState(AnimConsts.PLAYER_RUN_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_RUN_STATE);
                 break;
             case AnimationType.jump:
-                SwitchAnimationState(AnimConsts.PLAYER_JUMP_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_JUMP_STATE);
                 break;
             case AnimationType.fall:
-                SwitchAnimationState(AnimConsts.PLAYER_FAll_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_FAll_STATE);
                 break;
             case AnimationType.climb:
-                SwitchAnimationState(AnimConsts.PLAYER_CLIMB_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_CLIMB_STATE);
                 break;
             case AnimationType.respawn:
-                SwitchAnimationState(AnimConsts.PLAYER_RESPAWN_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_RESPAWN_STATE);
                 break;
             default:
                 break;
         }
 
     }
-    public void SwitchAnimationState(string stateName)
+
+    private void SwitchAnimationState(string stateName)
     {
-        animator.Play(stateName, -1, 0f);
+        Debug.Log(stateName);
+        animator.CrossFade(stateName,kCrossFadeTime);
     }
 
 
     public void InvokeAnimationAction()
     {
-        agent.ID.playerEvents.OnAnimationAction?.Invoke();
+        Agent.ID.PlayerEvents.OnAnimationAction?.Invoke();
     }
 
     public void InvokeAnimationEnd()
     {
-        agent.ID.playerEvents.OnAnimationEnd?.Invoke();
+        Agent.ID.PlayerEvents.OnAnimationEnd?.Invoke();
     }
 }
 

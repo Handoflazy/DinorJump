@@ -32,12 +32,12 @@ namespace DesignPatterns
         public void Enter()
         {
             
-            player.ID.playerEvents.OnAttackPressed += HandleAttack;
-            player.ID.playerEvents.OnJumpPressed += HandleJumpPressed;
-            player.ID.playerEvents.OnJumpReleased += HandleJumpReleased;
-            player.ID.playerEvents.OnAnimationAction += () => OnAction?.Invoke();
-            player.ID.playerEvents.OnAnimationEnd += () => OnEnd?.Invoke();
-            player.ID.playerEvents.OnMoveInput += HandleMove;
+            player.ID.PlayerEvents.OnAttackPressed += HandleAttack;
+            player.ID.PlayerEvents.OnJumpPressed += HandleJumpPressed;
+            player.ID.PlayerEvents.OnJumpReleased += HandleJumpReleased;
+            player.ID.PlayerEvents.OnAnimationAction += () => OnAction?.Invoke();
+            player.ID.PlayerEvents.OnAnimationEnd += () => OnEnd?.Invoke();
+            player.ID.PlayerEvents.OnMoveInput += HandleMove;
             OnEnter?.Invoke();
             EnterState();
         }
@@ -69,11 +69,11 @@ namespace DesignPatterns
 
         public void Exit()
         {
-            player.ID.playerEvents.OnAttackPressed -= HandleAttack;
-            player.ID.playerEvents.OnMoveInput -= HandleMove;
-            player.ID.playerEvents.OnJumpPressed -= HandleJumpPressed;
-            player.ID.playerEvents.OnJumpReleased -= HandleJumpReleased;
-            player.ID.playerEvents.ResetAnimationEvents();
+            player.ID.PlayerEvents.OnAttackPressed -= HandleAttack;
+            player.ID.PlayerEvents.OnMoveInput -= HandleMove;
+            player.ID.PlayerEvents.OnJumpPressed -= HandleJumpPressed;
+            player.ID.PlayerEvents.OnJumpReleased -= HandleJumpReleased;
+            player.ID.PlayerEvents.ResetAnimationEvents();
             OnExit?.Invoke();
             ExitState();
         }

@@ -12,7 +12,7 @@ public class PlayerHealth : Damageable
     // Start is called before the first frame update
     private void OnEnable()
     {
-        OnHealthValueChange.AddListener((int health) => agent.ID.playerEvents.OnHealthValueChange?.Invoke(health));
+        OnHealthValueChange.AddListener((int health) => agent.ID.PlayerEvents.OnHealthValueChange?.Invoke(health));
     }
     private void OnDisable()
     {
@@ -25,7 +25,7 @@ public class PlayerHealth : Damageable
     }
     public override void Inititalize(int health)
     {
-        agent.ID.playerEvents.OnInitializeMaxHealth?.Invoke(health);
+        agent.ID.PlayerEvents.OnInitializeMaxHealth?.Invoke(health);
         base.Inititalize(health);
         
     }

@@ -12,7 +12,7 @@ public class JumpState : MoveState
     {
         player.LastPressedJumpTime = 0;
         rb2d.velocity = Vector2.zero;
-        player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.jump);
+        player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.jump);
         player.IsJumping = true;
         player.IsWallJumping = false;
         player._isJumpCut = false;

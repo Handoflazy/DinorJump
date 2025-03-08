@@ -252,7 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2af83578e973154e886d9777e0df23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
   currentHealth: 0
   OnHealthValueChange:
     m_PersistentCalls:
@@ -1257,6 +1256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 371138196252046417}
   isFacingRight: 0
+  kCrossFadeTime: 0.15
 --- !u!114 &14991998242551330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 4b03c72a25220ea4c9d014a37f6404bf, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 0079ccbee1978dd41b3d03b33fb659fb, type: 3}
 --- !u!1 &6096239506125096062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35d12f9920ee0742b610f7e11d904b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 7138221772776332816}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []

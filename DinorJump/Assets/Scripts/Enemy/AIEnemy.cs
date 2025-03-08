@@ -24,23 +24,23 @@ namespace SVS.AI
         }
         public void CallOnAttack()
         {
-            agent.ID.playerEvents.OnAttackPressed?.Invoke();
+            Agent.ID.PlayerEvents.OnAttackPressed?.Invoke();
         }
         public void CallJumpPressed()
         {
-            agent.ID.playerEvents.OnJumpPressed?.Invoke();
+            Agent.ID.PlayerEvents.OnJumpPressed?.Invoke();
         }
         public void CallJumpReleased()
         {
-            agent.ID.playerEvents.OnJumpReleased?.Invoke();
+            Agent.ID.PlayerEvents.OnJumpReleased?.Invoke();
         }
         public void CallOnMovement(Vector2 input)
         {
-            agent.ID.playerEvents.OnMoveInput?.Invoke(input);
+            Agent.ID.PlayerEvents.OnMoveInput?.Invoke(input);
         }
         public void CallOnWeaponChange()
         {
-            agent.ID.playerEvents.OnWeaponChange?.Invoke();
+            Agent.ID.PlayerEvents.OnWeaponChange?.Invoke();
         }
     }
 }

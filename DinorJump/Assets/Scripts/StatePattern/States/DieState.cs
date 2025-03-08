@@ -11,14 +11,14 @@ public class DieState : State
     {
         SetGravityScale(2);
         rb2d.GetComponent<Collider2D>().enabled = false;
-        player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.die);
-        player.ID.playerEvents.OnAnimationEnd += WaitBeforeDieAction;
+        player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.die);
+        player.ID.PlayerEvents.OnAnimationEnd += WaitBeforeDieAction;
         
 
     }
     private void WaitBeforeDieAction()
     {
-        player.ID.playerEvents.OnAnimationEnd -= WaitBeforeDieAction;
+        player.ID.PlayerEvents.OnAnimationEnd -= WaitBeforeDieAction;
         StartCoroutine(WaiTCoroutine());
     }
     public override void StateUpdate()
@@ -28,7 +28,7 @@ public class DieState : State
     IEnumerator WaiTCoroutine()
     {
         yield return new WaitForSeconds(TimeToWaitBeforeRespawn);
-        player.ID.playerEvents.OnPlayerdied?.Invoke();
+        player.ID.PlayerEvents.OnPlayerDied?.Invoke();
     }
     protected override void ExitState()
     {

@@ -23,7 +23,7 @@ public class FragileBlock : MonoBehaviour,IHittable
 
     private void Destroy()
     {
-        animator.Play(AnimConsts.PLAYER_DEATH_PARAM);
+        animator.Play(AnimConsts.PLAYER_DEATH_STATE);
     }
     public void Destructible()
     {

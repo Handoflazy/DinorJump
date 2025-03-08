@@ -12,7 +12,7 @@ namespace DesignPatterns.States
 
         protected override void EnterState()
         {
-            player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.idle);
+            player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.idle);
             if (player.groundedDetector.IsGrounded)
             {
                 rb2d.velocity = Vector2.zero;

@@ -15,13 +15,13 @@ namespace SVS.Player
         public int Points { get=>points; private set=>points = value; }
         private void Start()
         {
-            agent.ID.playerEvents.OnPointsValueChange?.Invoke(points);
+            Agent.ID.PlayerEvents.OnPointsValueChange?.Invoke(points);
         }
         public void Add(int amount)
         {
             Points+=amount;
-            agent.ID.playerEvents.OnPickUpPoints?.Invoke();
-            agent.ID.playerEvents.OnPointsValueChange?.Invoke(Points);
+            Agent.ID.PlayerEvents.OnPickUpPoints?.Invoke();
+            Agent.ID.PlayerEvents.OnPointsValueChange?.Invoke(Points);
             OnPickUpPoints?.Invoke();
         }
 

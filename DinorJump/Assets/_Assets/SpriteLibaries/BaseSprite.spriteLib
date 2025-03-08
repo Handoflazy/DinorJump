@@ -13,38 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library:
-  - m_Name: Idle
-    m_Hash: 1008081451
-    m_CategoryList: []
-    m_OverrideEntries: []
-    m_FromMain: 0
-    m_EntryOverrideCount: 0
-  - m_Name: Run
-    m_Hash: 675013152
-    m_CategoryList: []
-    m_OverrideEntries: []
-    m_FromMain: 0
-    m_EntryOverrideCount: 0
-  - m_Name: Jump
-    m_Hash: 125937960
-    m_CategoryList: []
-    m_OverrideEntries: []
-    m_FromMain: 0
-    m_EntryOverrideCount: 0
   - m_Name: Land
     m_Hash: 137525990
-    m_CategoryList: []
-    m_OverrideEntries: []
-    m_FromMain: 0
-    m_EntryOverrideCount: 0
-  - m_Name: Hit
-    m_Hash: 580870305
-    m_CategoryList: []
-    m_OverrideEntries: []
-    m_FromMain: 0
-    m_EntryOverrideCount: 0
-  - m_Name: Death
-    m_Hash: 646380074
     m_CategoryList: []
     m_OverrideEntries: []
     m_FromMain: 0
@@ -55,18 +25,6 @@ MonoBehaviour:
     m_OverrideEntries: []
     m_FromMain: 0
     m_EntryOverrideCount: 0
-  - m_Name: Fall
-    m_Hash: 459436082
-    m_CategoryList: []
-    m_OverrideEntries: []
-    m_FromMain: 0
-    m_EntryOverrideCount: 0
-  - m_Name: Attack
-    m_Hash: 7088141
-    m_CategoryList: []
-    m_OverrideEntries: []
-    m_FromMain: 0
-    m_EntryOverrideCount: 0
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638554640726179310
+  m_ModificationHash: 638770641091282169
   m_Version: 1

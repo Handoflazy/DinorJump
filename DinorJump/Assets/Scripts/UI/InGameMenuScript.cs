@@ -41,7 +41,7 @@ namespace SVS.UI
             if (levelManagement == null)
                 levelManagement = FindObjectOfType<LevelManagement>();
             levelManagement.RestartCurrentLevel();
-            DinorSingleton.Instance.PlayerID.playerEvents.OnResetInputAction?.Invoke();
+            DinorSingleton.Instance.PlayerID.PlayerEvents.OnResetInputAction?.Invoke();
             gameObject.SetActive(false);
         }
     }

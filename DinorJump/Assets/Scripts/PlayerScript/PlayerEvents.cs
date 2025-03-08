@@ -21,7 +21,7 @@ public struct PlayerEvents
     //Spawn Events
 
     public Action<GameObject> OnRespawnRequired;
-    public Action OnPlayerdied;
+    public Action OnPlayerDied;
 
     //Weapon Events
 

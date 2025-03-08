@@ -13,17 +13,17 @@ public class AgentSpriteAnimation : AgentSystem
 
     private void OnEnable()
     {
-        agent.ID.playerEvents.OnMoveInput += OnUpdateDirection;
-        agent.ID.playerEvents.OnSwitchAnimation += PlayAnimation;
-        agent.ID.playerEvents.OnStopAnimation += StopAnimation;
-        agent.ID.playerEvents.OnStartAnimation += StartAnimation;
+        Agent.ID.PlayerEvents.OnMoveInput += OnUpdateDirection;
+        Agent.ID.PlayerEvents.OnSwitchAnimation += PlayAnimation;
+        Agent.ID.PlayerEvents.OnStopAnimation += StopAnimation;
+        Agent.ID.PlayerEvents.OnStartAnimation += StartAnimation;
     }
     private void OnDisable()
     {
-        agent.ID.playerEvents.OnMoveInput -= OnUpdateDirection;
-        agent.ID.playerEvents.OnSwitchAnimation -= PlayAnimation;
-        agent.ID.playerEvents.OnStopAnimation -= StopAnimation;
-        agent.ID.playerEvents.OnStartAnimation -= StartAnimation;
+        Agent.ID.PlayerEvents.OnMoveInput -= OnUpdateDirection;
+        Agent.ID.PlayerEvents.OnSwitchAnimation -= PlayAnimation;
+        Agent.ID.PlayerEvents.OnStopAnimation -= StopAnimation;
+        Agent.ID.PlayerEvents.OnStartAnimation -= StartAnimation;
     }
 
     private void StopAnimation()
@@ -36,7 +36,7 @@ public class AgentSpriteAnimation : AgentSystem
     }
     private void OnUpdateDirection(Vector2 direction)
     {
-        if (agent.IsAttacking || agent.IsDeath)
+        if (Agent.IsAttacking || Agent.IsDeath)
         {
             return;
         }
@@ -61,31 +61,31 @@ public class AgentSpriteAnimation : AgentSystem
         {
 
             case AnimationType.die:
-                SwitchAnimationState(AnimConsts.PLAYER_DEATH_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_DEATH_STATE);
                 break;
             case AnimationType.hit:
-                SwitchAnimationState(AnimConsts.PLAYER_HIT_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_HIT_STATE);
                 break;
             case AnimationType.idle:
-                SwitchAnimationState(AnimConsts.PLAYER_IDLE_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_IDLE_STATE);
                 break;
             case AnimationType.attack:
-                SwitchAnimationState(AnimConsts.PLAYER_ATTACK_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_ATTACK_STATE);
                 break;
             case AnimationType.run:
-                SwitchAnimationState(AnimConsts.PLAYER_RUN_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_RUN_STATE);
                 break;
             case AnimationType.jump:
-                SwitchAnimationState(AnimConsts.PLAYER_JUMP_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_JUMP_STATE);
                 break;
             case AnimationType.fall:
-                SwitchAnimationState(AnimConsts.PLAYER_FAll_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_FAll_STATE);
                 break;
             case AnimationType.climb:
-                SwitchAnimationState(AnimConsts.PLAYER_CLIMB_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_CLIMB_STATE);
                 break;
             case AnimationType.respawn:
-                SwitchAnimationState(AnimConsts.PLAYER_RESPAWN_PARAM);
+                SwitchAnimationState(AnimConsts.PLAYER_RESPAWN_STATE);
                 break;
             default:
                 break;
@@ -100,11 +100,11 @@ public class AgentSpriteAnimation : AgentSystem
 
     public void InvokeAnimationAction(Frame frame)
     {
-        agent.ID.playerEvents.OnAnimationAction?.Invoke();
+        Agent.ID.PlayerEvents.OnAnimationAction?.Invoke();
     }
 
     public void InvokeAnimationEnd()
     {
-        agent.ID.playerEvents.OnAnimationEnd?.Invoke();
+        Agent.ID.PlayerEvents.OnAnimationEnd?.Invoke();
     }
 }

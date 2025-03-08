@@ -21,11 +21,11 @@ public class RespawnManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerID.playerEvents.OnRespawnRequired += Respawn;
+        playerID.PlayerEvents.OnRespawnRequired += Respawn;
     }
     private void OnDisable()
     {
-        playerID.playerEvents.OnRespawnRequired -= Respawn;
+        playerID.PlayerEvents.OnRespawnRequired -= Respawn;
     }
     public void UpdateRespawnPoint(RespawnPoint newRespawnPoint)
     {

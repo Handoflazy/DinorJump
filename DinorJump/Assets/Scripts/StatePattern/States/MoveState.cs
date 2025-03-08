@@ -18,7 +18,7 @@ namespace DesignPatterns.States
         }
         protected override void EnterState()
         {
-            player.ID.playerEvents.OnSwitchAnimation?.Invoke(AnimationType.run);
+            player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.run);
         }
         public override void StateUpdate()
         {

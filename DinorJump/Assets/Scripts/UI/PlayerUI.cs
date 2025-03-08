@@ -20,23 +20,23 @@ public class PlayerUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        playerID.playerEvents.OnInitializeMaxHealth += InitializeMaxHealth;
-        playerID.playerEvents.OnHealthValueChange += SetHealth;
-        playerID.playerEvents.OnWeaponSwap += UpdateWeaponSprite;
-        playerID.playerEvents.OnMulipleWeapons +=(bool val)=> weaponElementUI.ToggleWeaponTip(val);
-        playerID.playerEvents.OnPointsValueChange += SetPoints;
-        playerID.playerEvents.OnToggleMenu += ToggleInGameMenu;
+        playerID.PlayerEvents.OnInitializeMaxHealth += InitializeMaxHealth;
+        playerID.PlayerEvents.OnHealthValueChange += SetHealth;
+        playerID.PlayerEvents.OnWeaponSwap += UpdateWeaponSprite;
+        playerID.PlayerEvents.OnMulipleWeapons +=(bool val)=> weaponElementUI.ToggleWeaponTip(val);
+        playerID.PlayerEvents.OnPointsValueChange += SetPoints;
+        playerID.PlayerEvents.OnToggleMenu += ToggleInGameMenu;
 
 
     }
     private void OnDisable()
     {
-        playerID.playerEvents.OnInitializeMaxHealth -= InitializeMaxHealth;
-        playerID.playerEvents.OnHealthValueChange -= SetHealth;
-        playerID.playerEvents.OnWeaponSwap -= UpdateWeaponSprite;
-        playerID.playerEvents.OnMulipleWeapons -= (bool val) => weaponElementUI.ToggleWeaponTip(val);
-        playerID.playerEvents.OnPointsValueChange -= SetPoints;
-        playerID.playerEvents.OnToggleMenu -= ToggleInGameMenu;
+        playerID.PlayerEvents.OnInitializeMaxHealth -= InitializeMaxHealth;
+        playerID.PlayerEvents.OnHealthValueChange -= SetHealth;
+        playerID.PlayerEvents.OnWeaponSwap -= UpdateWeaponSprite;
+        playerID.PlayerEvents.OnMulipleWeapons -= (bool val) => weaponElementUI.ToggleWeaponTip(val);
+        playerID.PlayerEvents.OnPointsValueChange -= SetPoints;
+        playerID.PlayerEvents.OnToggleMenu -= ToggleInGameMenu;
     }
     public void InitializeMaxHealth(int maxHealth)
     {

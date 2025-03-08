@@ -22,11 +22,11 @@ namespace WeaponSystem
         }
         private void OnEnable()
         {
-            agent.ID.playerEvents.OnWeaponChange += SwapWeapon;
+            Agent.ID.PlayerEvents.OnWeaponChange += SwapWeapon;
         }
         private void OnDisable()
         {
-            agent.ID.playerEvents.OnWeaponChange -= SwapWeapon;
+            Agent.ID.PlayerEvents.OnWeaponChange -= SwapWeapon;
         }
 
         public void ToggleWeaponVisiblity(bool v)
@@ -51,7 +51,7 @@ namespace WeaponSystem
             if (spriteRenderer)
             {
                 spriteRenderer.sprite = weaponSprite;
-                agent.ID.playerEvents.OnWeaponSwap?.Invoke(weaponSprite);
+                Agent.ID.PlayerEvents.OnWeaponSwap?.Invoke(weaponSprite);
 
             }
         }
@@ -67,7 +67,7 @@ namespace WeaponSystem
         {
             weaponStorage.AddWeaponData(weaponData);
             if (weaponStorage.WeaponCount == 2)
-                agent.ID.playerEvents.OnMulipleWeapons?.Invoke(true);
+                Agent.ID.PlayerEvents.OnMulipleWeapons?.Invoke(true);
             SwapWeaponSprite(weaponData.weaponSprite);
         }
         public void PickUpWeapon(WeaponData weaponData)
@@ -91,7 +91,7 @@ namespace WeaponSystem
         {
             SwapWeaponSprite(null);
             weaponStorage.ClearStorage();
-            agent.ID.playerEvents.OnMulipleWeapons?.Invoke(false);
+            Agent.ID.PlayerEvents.OnMulipleWeapons?.Invoke(false);
             if (transform.childCount > 0)
             {
                 Destroy(transform.GetChild(0));

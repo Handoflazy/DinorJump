@@ -18,11 +18,11 @@ public class ExitLevelTransition : MonoBehaviour
 
     private void Start()
     {
-        DinorSingleton.Instance.PlayerID.playerEvents.OnMoveInput += ReadInput;
+        DinorSingleton.Instance.PlayerID.PlayerEvents.OnMoveInput += ReadInput;
     }
     private void OnDisable()
     {
-        DinorSingleton.Instance.PlayerID.playerEvents.OnMoveInput -= ReadInput;
+        DinorSingleton.Instance.PlayerID.PlayerEvents.OnMoveInput -= ReadInput;
     }
     private void ReadInput( Vector2 inputVector)
     {

@@ -12,11 +12,11 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
 
     private void OnEnable()
     {
-        agent.ID.playerEvents.OnResetInputAction += ResetToMain;
+        Agent.ID.PlayerEvents.OnResetInputAction += ResetToMain;
     }
     private void OnDisable()
     {
-        agent.ID.playerEvents.OnResetInputAction -= ResetToMain;
+        Agent.ID.PlayerEvents.OnResetInputAction -= ResetToMain;
     }
     protected override void Awake()
     {
@@ -32,7 +32,7 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
 
     private void Update()
     {
-        agent.ID.playerEvents.OnMoveInput?.Invoke(MovementVector);
+        Agent.ID.PlayerEvents.OnMoveInput?.Invoke(MovementVector);
     }
     public void OnMovement(InputAction.CallbackContext context)
     {
@@ -43,12 +43,12 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            agent.ID.playerEvents.OnJumpPressed?.Invoke();
+            Agent.ID.PlayerEvents.OnJumpPressed?.Invoke();
 
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            agent.ID.playerEvents.OnJumpReleased?.Invoke();
+            Agent.ID.PlayerEvents.OnJumpReleased?.Invoke();
         }
 
     }
@@ -57,7 +57,7 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            agent.ID.playerEvents.OnAttackPressed?.Invoke();
+            Agent.ID.PlayerEvents.OnAttackPressed?.Invoke();
         }
     }
 
@@ -65,7 +65,7 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            agent.ID.playerEvents.OnWeaponChange?.Invoke();
+            Agent.ID.PlayerEvents.OnWeaponChange?.Invoke();
         }
     }
 
@@ -73,7 +73,7 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            agent.ID.playerEvents.OnToggleMenu?.Invoke(true);
+            Agent.ID.PlayerEvents.OnToggleMenu?.Invoke(true);
             inputActions.Menu.Enable();
             inputActions.Main.Disable();
 
@@ -84,7 +84,7 @@ public class AgentInputs : AgentSystem, PlayerControls.IMainActions, PlayerContr
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            agent.ID.playerEvents.OnToggleMenu?.Invoke(false);
+            Agent.ID.PlayerEvents.OnToggleMenu?.Invoke(false);
             inputActions.Menu.Disable();
             inputActions.Main.Enable();
         }

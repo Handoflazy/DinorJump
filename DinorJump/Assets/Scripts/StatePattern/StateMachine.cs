@@ -19,7 +19,7 @@ namespace DesignPatterns.States
         private State idleState, walkState, jumpState, fallState, climbState, attackState
         ,getHitState, dieState, respawnState, flyState;
 
-        private event Action<IState> stateChanged;
+        private event Action<IState> StateChanged;
         protected override void Awake()
         {
             base.Awake();
@@ -30,7 +30,7 @@ namespace DesignPatterns.States
             CurrentState.Enter();
 
             // notify other objects that state has changed
-            stateChanged?.Invoke(CurrentState);
+            StateChanged?.Invoke(CurrentState);
         }
         public void Initialize(IState state)
         {
@@ -38,7 +38,7 @@ namespace DesignPatterns.States
             state.Enter();
 
             // notify other objects that state has changed
-            stateChanged?.Invoke(state);
+            StateChanged?.Invoke(state);
         }
 
         // exit this state and enter another
@@ -49,7 +49,7 @@ namespace DesignPatterns.States
             CurrentState = nextState;
             nextState.Enter();
             // notify other objects that state has changed
-            stateChanged?.Invoke(nextState);
+            StateChanged?.Invoke(nextState);
         }
         public IState GetState(StateType stateType)
             => stateType switch

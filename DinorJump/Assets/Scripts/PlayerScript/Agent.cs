@@ -115,7 +115,7 @@ public class Agent : MonoBehaviour
 
     private void OnEnable()
     {
-        ID.playerEvents.OnMoveInput += CheckDirectionToFace;
+        ID.PlayerEvents.OnMoveInput += CheckDirectionToFace;
     }
 
     private void Update()
@@ -188,7 +188,7 @@ public class Agent : MonoBehaviour
             if (this.CompareTag("Player"))
             {
                 if (!IsDeath)
-                    ID.playerEvents.OnToggleMenu?.Invoke(true);
+                    ID.PlayerEvents.OnToggleMenu?.Invoke(true);
             }
             IsDeath = true;
             
@@ -208,7 +208,7 @@ public class Agent : MonoBehaviour
     public async void Respawn()
     {
         await Task.Delay(500);  
-        ID.playerEvents.OnRespawnRequired?.Invoke(this.gameObject);
+        ID.PlayerEvents.OnRespawnRequired?.Invoke(this.gameObject);
         OnRespawn?.Invoke();
     }
 
