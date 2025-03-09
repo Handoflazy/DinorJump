@@ -1,7 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class UIShakeAnimation : MonoBehaviour
@@ -16,23 +13,35 @@ public class UIShakeAnimation : MonoBehaviour
 
     [Space(10)]
 
+    
     Sequence sequence;
     public bool PlayOnWake = true;
-    private void OnEnable()
-    {
-        DOTween.KillAll();
-        PlayAnimation();
-    }
+    
     private void Start()
     {
-        sequence = DOTween.Sequence().Append(element.DOShakeRotation(shakeTime, shakeStrength, vibrato, randomness, fadeOut));
-        sequence.SetLoops(-1,LoopType.Restart);
-        sequence.AppendInterval(delayBetweenShakes);
-
         if (PlayOnWake)
         {
             PlayAnimation();
         }
     }
-    public void PlayAnimation()=>sequence.Play();
+
+    private void CreateSequence()
+    {
+        sequence = DOTween.Sequence()
+            .Append(element.DOShakeRotation(shakeTime, shakeStrength, vibrato, randomness, fadeOut))
+            .SetLoops(-1, LoopType.Restart)
+            .AppendInterval(delayBetweenShakes);
+    }
+    public void PlayAnimation() {
+        CreateSequence();
+        sequence.Play();
+    }
+
+    private void OnDestroy()
+    {
+        if(sequence != null)
+        {
+            sequence.Kill();
+        }
+    }
 }

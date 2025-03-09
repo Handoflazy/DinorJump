@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using WeaponSystem;
 
 public class Agent : MonoBehaviour
@@ -15,7 +16,7 @@ public class Agent : MonoBehaviour
 
     #region COMPONENTS
     public PlayerID ID;
-    public Rigidbody2D RB2D { get; private set; }
+    [SerializeField] Rigidbody2D rb2d;
     [field: SerializeField]
     public MovementDataSO Data { get; private set; }
     public GroundedDetector groundedDetector;
@@ -24,8 +25,9 @@ public class Agent : MonoBehaviour
     public StateMachine playerStateMachine;
     public AgentWeaponManager agentWeapon;
 
+    
 
-    private static Dictionary<int, GameObject> instances = new Dictionary<int, GameObject>();
+    private static Dictionary<int, GameObject> instances = new();
     #endregion
 
     #region STATE PARAMETERS
@@ -37,9 +39,6 @@ public class Agent : MonoBehaviour
     public bool IsFacingRight { get; set; }
     public bool IsJumping { get; set; }
     public bool IsWallJumping { get; set; }
-    public bool IsDashing { get; set; }
-    public bool IsSliding { get; set; }
-
     //Timers (also all fields, could be private and a method returning a bool could be used)
     public float LastOnGroundTime { get; set; }
     public float LastOnWallTime { get; set; }
@@ -47,14 +46,14 @@ public class Agent : MonoBehaviour
     public float LastOnWallLeftTime { get; set; }
 
     //Jump
-    public bool _isJumpCut;
-    public bool _isJumpFalling;
+    public bool isJumpCut;
+    public bool isJumpFalling;
 
 
     #endregion
 
     #region INPUT PARAMETERS
-    public Vector2 _moveInput { get; set; }
+    public Vector2 MoveInput { get; set; }
 
     public float LastPressedJumpTime { get; set; }
     public float LastPressedDashTime { get; set; }
@@ -63,13 +62,7 @@ public class Agent : MonoBehaviour
     #region CHECK PARAMETERS
     //Set all of these up in the inspector
     [Header("Checks")]
-    [SerializeField] private Transform _groundCheckPoint;
-    //Size of groundCheck depends on the size of your character generally you want them slightly small than width (for ground) and height (for the wall check)
-    [SerializeField] private Vector2 _groundCheckSize = new Vector2(0.49f, 0.03f);
-    [Space(5)]
-    [SerializeField] private Transform _frontWallCheckPoint;
-    [SerializeField] private Transform _backWallCheckPoint;
-    [SerializeField] private Vector2 _wallCheckSize = new Vector2(0.5f, 1f);
+    [SerializeField] private Transform groundCheckPoint;
     #endregion
 
     #region EVENTS
@@ -80,11 +73,8 @@ public class Agent : MonoBehaviour
 
     private void Awake()
     {
-
-
-        if (instances.ContainsKey(instanceID))
+        if (instances.TryGetValue(instanceID, out GameObject existing))
         {
-            var existing = instances[instanceID];
             if (existing != null)
             {
                 if (ReferenceEquals(gameObject, existing))
@@ -100,7 +90,7 @@ public class Agent : MonoBehaviour
         climbingDetector = GetComponentInChildren<ClimbingDetector>();
         playerStateMachine = GetComponentInChildren<StateMachine>();
         agentWeapon = GetComponentInChildren<AgentWeaponManager>();
-        RB2D = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         if (gameObject.CompareTag("Player"))
             DontDestroyOnLoad(gameObject);
         Data = Data.Clone();
@@ -129,34 +119,15 @@ public class Agent : MonoBehaviour
         LastPressedJumpTime -= Time.deltaTime;
         LastPressedDashTime -= Time.deltaTime;
         #endregion
-
-        #region INPUT HANDLER
-        //if (_moveInput.x != 0)
-        //    CheckDirectionToFace(_moveInput.x > 0);
-
-        #endregion
-
-        #region UDPATE STATE PARAMETERS
-
-
-        #endregion
+        
         #region COLLISION CHECKS
         if (groundedDetector && groundedDetector.IsGrounded)
         {
             LastOnGroundTime = Data.coyoteTime;
         }
-        if(groundedDetector)
-              groundedDetector.CheckGrounded();
-        //if (groundedDetector.CheckRightWall())
-        //{
-        //    LastOnWallRightTime = Data.coyoteTime;
-        //}
-        //if (groundedDetector.CheckLeftWall())
-        //{
-        //    LastOnWallLeftTime = Data.coyoteTime;
-        //}
-        //LastOnWallTime = Mathf.Max(LastOnWallLeftTime, LastOnWallRightTime);
 
+        if(groundedDetector)
+            groundedDetector.CheckGrounded();
         #endregion
     }
 
@@ -176,7 +147,7 @@ public class Agent : MonoBehaviour
     public void AgentDied()
     {
 
-        if (GetComponent<Damageable>().CurrentHealth > 0 && this.CompareTag("Player"))
+        if (GetComponent<Damageable>().CurrentHealth > 0 && CompareTag("Player"))
         {
             Respawn();
             playerStateMachine.CurrentState.Respawn();
@@ -185,7 +156,7 @@ public class Agent : MonoBehaviour
         else
         {
             playerStateMachine.CurrentState.Die();
-            if (this.CompareTag("Player"))
+            if (CompareTag("Player"))
             {
                 if (!IsDeath)
                     ID.PlayerEvents.OnToggleMenu?.Invoke(true);
@@ -205,22 +176,21 @@ public class Agent : MonoBehaviour
         GetComponent<AgentInputs>().enabled = true;
         IsDeath = false;
     }
-    public async void Respawn()
-    {
-        await Task.Delay(500);  
-        ID.PlayerEvents.OnRespawnRequired?.Invoke(this.gameObject);
-        OnRespawn?.Invoke();
+
+    private async void Respawn() {
+        try {
+            await Task.Delay(500);  
+            ID.PlayerEvents.OnRespawnRequired?.Invoke(gameObject);
+            OnRespawn?.Invoke();
+        } catch (Exception e) {
+            
+        }
     }
 
     public bool CanJump()
     {
         return LastOnGroundTime > 0;
     }
-    public void SetGravityScale(float scale)
-    {
-        RB2D.gravityScale = scale;
-    }
-
     internal void PickUp(WeaponData weaponData)
     {
         if(weaponData != null)

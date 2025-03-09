@@ -1,3 +1,4 @@
+using System;
 using SVS.Level;
 using SVS.PlayerAgent;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ public class Player : AgentSystem, ISaveData
         weaponManager = FindObjectOfType<WeaponManager>();
         agentWeaponManager = GetComponentInChildren<AgentWeaponManager>();
     }
+
     public void LoadData()
     {
         List<string> weaponName = SaveSystem.LoadWeapons();
@@ -24,7 +26,6 @@ public class Player : AgentSystem, ISaveData
         {
             foreach (string name in weaponName)
             {
-                print("Loading weapon: " + name);
                 var weapon = weaponManager.GetWeaponWithName(name);
                 agentWeaponManager.AddWeaponData(weapon);
             }
@@ -32,7 +33,7 @@ public class Player : AgentSystem, ISaveData
         }
         else
         {
-            print("No Weapon To load");
+      
             agentWeaponManager.ClearAllWeapon();
         }
 
@@ -41,7 +42,7 @@ public class Player : AgentSystem, ISaveData
     public void SaveData()
     {
         List<string> weaponNames = agentWeaponManager.GetPlayerWeaponNames();
-        if(weaponNames != null &&weaponNames.Count>0)
+        if(weaponNames is { Count: > 0 })
         {
             SaveSystem.SaveWeapons(weaponNames);
         }

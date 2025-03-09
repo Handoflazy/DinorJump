@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using SVS.Level;
 
-public class PlayerHealth : Damageable
+public class PlayerHealth : Damageable, ISaveData
 {
     private Agent agent;
     private void Awake()
@@ -21,17 +19,27 @@ public class PlayerHealth : Damageable
     protected override void Start()
     {
         base.Start();
-        Inititalize(maxHealth);
+        Initialize(maxHealth);
     }
-    public override void Inititalize(int health)
+    public override void Initialize(int health)
     {
         agent.ID.PlayerEvents.OnInitializeMaxHealth?.Invoke(health);
-        base.Inititalize(health);
+        base.Initialize(health);
         
     }
     public void OutOfLife()
     {
         agent.AgentDied();
+    }
+    public void SaveData()
+    {
+        SaveSystem.SaveCurrentHealth(currentHealth);
+    }
+
+    public void LoadData()
+    {
+        CurrentHealth = SaveSystem.LoadHealth();
+       
     }
     
 }

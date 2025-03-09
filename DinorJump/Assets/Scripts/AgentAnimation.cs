@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 public class AgentAnimation : AgentSystem
 {
@@ -96,7 +95,6 @@ public class AgentAnimation : AgentSystem
 
     private void SwitchAnimationState(string stateName)
     {
-        Debug.Log(stateName);
         animator.CrossFade(stateName,kCrossFadeTime);
     }
 

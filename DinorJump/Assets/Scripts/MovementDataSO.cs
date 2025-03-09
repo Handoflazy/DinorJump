@@ -1,5 +1,3 @@
-
-using System.ComponentModel;
 using UnityEngine;
 
 
@@ -11,7 +9,6 @@ public class MovementDataSO : ScriptableObject
 
 
     [Header("Parameter")]
-    [ReadOnlyInspector]
     public Vector2 MoveVector;
     public float currentSpeed;
     [Space(20)]

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using WeaponSystem;
-using static UnityEditor.Progress;
 
 namespace SVS.Pickable
 {

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClimbingDetector : MonoBehaviour
 {
     public LayerMask climbingLayerMask;
 
-    [SerializeField,ReadOnlyInspector]
+    [SerializeField]
     private bool canClimb;
 
     public bool CanClimb { get => canClimb; private set => canClimb = value; }

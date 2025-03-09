@@ -5,7 +5,6 @@ using UnityEngine;
 public class RespawnManager : MonoBehaviour
 {
     List<RespawnPoint> respawnPoints = new List<RespawnPoint>();
-    [ReadOnlyInspector]
     public RespawnPoint currentRespawnPoints;
     [SerializeField]
     private PlayerID playerID;
@@ -36,8 +35,6 @@ public class RespawnManager : MonoBehaviour
     {
         currentRespawnPoints.SetPlayerGO(objectToRespawn);
         currentRespawnPoints.RespawnPlayer();
-        if(objectToRespawn == null) 
-        return;
     }
 
     public void RespawnAt(RespawnPoint spawnPoint, GameObject playerGo)

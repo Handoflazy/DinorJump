@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class RespawnPoint : MonoBehaviour
 {
-    [ReadOnlyInspector,SerializeField]
+    [SerializeField]
     private GameObject respawnTarget;
 
     [field: SerializeField]

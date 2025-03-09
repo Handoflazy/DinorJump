@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UI;
 using UnityEngine;
 
@@ -7,6 +5,7 @@ public class PlayerUI : MonoBehaviour
 {
     private HealthUI healthUI;
     private PointUI pointUI;
+    [SerializeField]
     private WeaponElementUI weaponElementUI;
     [SerializeField]
     private PlayerID playerID;
@@ -16,7 +15,6 @@ public class PlayerUI : MonoBehaviour
     {
         healthUI = GetComponentInChildren<HealthUI>();
         pointUI = GetComponentInChildren<PointUI>();
-        weaponElementUI = GetComponentInChildren<WeaponElementUI>();
     }
     private void OnEnable()
     {

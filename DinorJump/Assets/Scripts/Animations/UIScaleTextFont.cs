@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,6 +47,9 @@ namespace SVS.UI
             text.fontSize = baseFontSize;
 
         }
-        
+
+        private void OnDestroy() {
+            StopAllCoroutines();
+        }
     }
 }

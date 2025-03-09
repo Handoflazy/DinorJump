@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DinorSaur
   m_EditorClassIdentifier: 
   playerName: Dinor
-  MaxHealth: 1
+  MaxHealth: 50

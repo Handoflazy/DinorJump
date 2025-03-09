@@ -1,15 +1,9 @@
-using JetBrains.Annotations;
-using SVS.Level;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Damageable : MonoBehaviour, IHittable, ISaveData
+public class Damageable : MonoBehaviour, IHittable
 {
-    protected int maxHealth;
+    protected int maxHealth = 4;
 
     [SerializeField]
     protected int currentHealth;
@@ -19,7 +13,7 @@ public class Damageable : MonoBehaviour, IHittable, ISaveData
     protected virtual void Start()
     {
         maxHealth = GetComponent<Agent>().ID.MaxHealth;
-        Inititalize(maxHealth);
+        Initialize(maxHealth);
     }
     public int CurrentHealth
     {
@@ -65,7 +59,7 @@ public class Damageable : MonoBehaviour, IHittable, ISaveData
         OnAddHealth?.Invoke();
     }
 
-    public virtual void Inititalize(int health)
+    public virtual void Initialize(int health)
     {
         maxHealth = health;
         OnInitialMaxHealth?.Invoke(maxHealth);
@@ -74,16 +68,5 @@ public class Damageable : MonoBehaviour, IHittable, ISaveData
     public float GetRatio()
     {
         return currentHealth / maxHealth;
-    }
-
-    public void SaveData()
-    {
-        SaveSystem.SaveCurrentHealth(currentHealth);
-    }
-
-    public void LoadData()
-    {
-        CurrentHealth = SaveSystem.LoadHealth();
-       
     }
 }

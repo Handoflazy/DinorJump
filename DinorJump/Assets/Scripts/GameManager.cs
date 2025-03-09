@@ -1,10 +1,10 @@
-using SVS.Camera;
 using System;
-using System.Collections;
+using SVS.Camera;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using DG.Tweening;
 
 namespace SVS.Level
 {
@@ -38,7 +38,7 @@ namespace SVS.Level
             if(respawnManager)
              respawnManager.Respawn(player.gameObject);
             if(cameraManager)
-            cameraManager.SetCameraTarget(player.transform);
+                cameraManager.SetCameraTarget(player.transform);
             player.ResetState();
             LoadData();
         }
@@ -66,10 +66,9 @@ namespace SVS.Level
             {
                 item.LoadData();
             }
-           // SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
-        public void ReloadEntity()
+        private void ReloadEntity()
         {
             if (cameraManager == null)
                 cameraManager = FindObjectOfType<CameraManager>();

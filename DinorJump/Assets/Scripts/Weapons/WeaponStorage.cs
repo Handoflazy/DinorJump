@@ -1,58 +1,59 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace WeaponSystem
 {
     public class WeaponStorage 
     {
-        private List<WeaponData> WeaponDataList = new List<WeaponData>();
+        private readonly List<WeaponData> weaponDataList = new();
         private int currentWeaponIndex = -1;
-        internal int WeaponCount { get=>WeaponDataList.Count; }
+        internal int WeaponCount => weaponDataList.Count;
 
-        internal bool AddWeaponData(WeaponData weaponData)
+        public bool AddWeaponData(WeaponData weaponData)
         {
-           if(WeaponDataList.Contains(weaponData)) return false;
-           WeaponDataList.Add(weaponData);
-            currentWeaponIndex = WeaponDataList.Count - 1;
+           if(weaponDataList.Contains(weaponData)) return false;
+           weaponDataList.Add(weaponData);
+            currentWeaponIndex = weaponDataList.Count - 1;
             return true;
         }
 
-        internal WeaponData GetCurrentWeapon()
+        public WeaponData GetCurrentWeapon()
         {
             if (currentWeaponIndex == -1)
             {
                 return null;
             }
-            return WeaponDataList[currentWeaponIndex];
+            return weaponDataList[currentWeaponIndex];
         }
 
-        internal List<string> GetPlayerWeaponNames()
+        public List<string> GetPlayerWeaponNames()
         {
-            return WeaponDataList.Select(Weapon=>Weapon.name).ToList();
+            return weaponDataList.Select(weapon=>weapon.name).ToList();
         }
 
-        internal WeaponData SwapWeapon()
+        public WeaponData SwapWeapon()
         {
             if (currentWeaponIndex == -1)
             {
                 return null;
             }
             currentWeaponIndex++;
-            if(currentWeaponIndex >= WeaponDataList.Count)
+            if(currentWeaponIndex >= weaponDataList.Count)
             {
                 currentWeaponIndex = 0;
             }
-            return WeaponDataList[currentWeaponIndex];
+            return weaponDataList[currentWeaponIndex];
         }
 
         public void ClearStorage()
         {
-            WeaponDataList.Clear();
+            weaponDataList.Clear();
             currentWeaponIndex = -1;
             
+        }
+        
+        public bool IsContainWeapon(WeaponData weaponData) {
+            return weaponDataList.Any(w => w.Equals(weaponData));
         }
 
        

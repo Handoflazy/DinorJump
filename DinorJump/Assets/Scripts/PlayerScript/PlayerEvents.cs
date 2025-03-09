@@ -44,9 +44,35 @@ public struct PlayerEvents
     public Action OnResetInputAction;
 
 
-    public void ResetAnimationEvents()
-    {
+    public void ResetAnimationEvents() {
         OnAnimationAction = null;
         OnAnimationEnd = null;
+    }
+
+    public void ResetAll() {
+        ResetAnimationEvents();
+        ResetPlayerEvents();
+        ResetUIEvents();
+        ResetWeaponEvents();
+    }
+
+    public void ResetUIEvents() {
+        OnInitializeMaxHealth = null;
+        OnWeaponSwap = null;
+        OnHealthValueChange = null;
+        OnToggleMenu = null;
+        OnWeaponChange = null;
+        OnPointsValueChange = null;
+        OnPickUpPoints = null;
+    }
+
+    public void ResetWeaponEvents() {
+        OnUseWeapon = null;
+        OnMulipleWeapons = null;
+    }
+
+    public void ResetPlayerEvents() {
+        OnRespawnRequired = null;
+        OnPlayerDied = null;
     }
 }

@@ -1,15 +1,15 @@
-using SVS.Level;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+    using System.Collections;
+    using SVS.Level;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class LevelManagement : MonoBehaviour
-{
+{  
     [SerializeField]
-    private int level_1SceneBuildIndex, menuSceneBuildIndex, winSceneBuildIndex;
+    private int level1SceneBuildIndex;
+
+    [SerializeField]
+    private int menuSceneBuildIndex, winSceneBuildIndex;
 
     [SerializeField]
     private bool ResetSaveData = false;
@@ -21,21 +21,34 @@ public class LevelManagement : MonoBehaviour
             SaveSystem.ResetSaveData();
         }
     }
-
-    public void RestartCurrentLevel()
-    {
+    public void RestartCurrentLevel() {
+        //Destroy(FindObjectOfType<Player>().gameObject);
         LoadSceneWithIndex(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator DelayCoroutine(float t,int sceneIndex) {
+        yield return new WaitForSeconds(t);
+        LoadSceneWithIndex(sceneIndex);
     }
     public void LoadStartLevel()
     {
-        LoadSceneWithIndex(level_1SceneBuildIndex);
+        PlayerPrefs.DeleteAll();
+        StartCoroutine(DelayCoroutine(0f, level1SceneBuildIndex));
     }
     public void LoadNextLevel()
     {
-        LoadSceneWithIndex(GetNextLevelIndex());
+        Debug.Log("Loading next level");
+        StartCoroutine(DelayCoroutine(0.2f,GetNextLevelIndex()));
     }
     public void LoadMenu()
     {
+        foreach (var obj in GameObject.FindObjectsOfType<GameObject>())
+        {
+            if (obj.scene.name == "DontDestroyOnLoad")
+            {
+                Destroy(obj);
+            }
+        }
         LoadSceneWithIndex(menuSceneBuildIndex);
     }
     public void LoadWinScene()
@@ -49,10 +62,8 @@ public class LevelManagement : MonoBehaviour
         {
             return index;
         }
-        else
-        {
-            return winSceneBuildIndex;
-        }
+
+        return winSceneBuildIndex;
     }
 
     public void QuitGame()

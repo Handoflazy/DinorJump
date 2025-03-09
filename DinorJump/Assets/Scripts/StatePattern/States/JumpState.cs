@@ -15,8 +15,8 @@ public class JumpState : MoveState
         player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.jump);
         player.IsJumping = true;
         player.IsWallJumping = false;
-        player._isJumpCut = false;
-        player._isJumpFalling = false;
+        player.isJumpCut = false;
+        player.isJumpFalling = false;
         if(rb2d)
          Jump();
     }

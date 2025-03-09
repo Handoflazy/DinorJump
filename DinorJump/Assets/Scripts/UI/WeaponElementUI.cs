@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -23,6 +21,10 @@ public class WeaponElementUI : MonoBehaviour
     }
     public void UpdateWeaponImage(Sprite sprite)
     {
+        if(sprite!=null && !gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(true);
+        }
         if ((weaponImage.sprite == sprite&& sprite))
         {
             weaponImage.enabled = true;
@@ -37,7 +39,7 @@ public class WeaponElementUI : MonoBehaviour
         else
         {
             weaponImage.enabled = false;
-
+            gameObject.SetActive(false);
         }
     }
     public void ToggleWeaponTip(bool val)
@@ -46,6 +48,6 @@ public class WeaponElementUI : MonoBehaviour
             return;
         weaponSwapTip.SetActive(val);
         if(val)
-        ToggleWeaponTipUI?.Invoke();
+            ToggleWeaponTipUI?.Invoke();
     }
 }

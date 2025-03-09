@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,9 +19,9 @@ namespace DesignPatterns.States
         {
           
             player.IsAttacking = true;
-            player.agentWeapon.ToggleWeaponVisiblity(true);
+            player.agentWeapon.ToggleWeaponVisibility(true);
             if(rb2d)
-            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+                rb2d.velocity = new Vector2(0, rb2d.velocity.y);
             player.ID.PlayerEvents.OnSwitchAnimation?.Invoke(AnimationType.attack);
             player.ID.PlayerEvents.OnAnimationAction += PerformAttack;
             player.ID.PlayerEvents.OnAnimationEnd += CompleteAttack;
@@ -33,7 +34,7 @@ namespace DesignPatterns.States
         protected override void ExitState()
         {
             player.ID.PlayerEvents.ResetAnimationEvents();
-            player.agentWeapon.ToggleWeaponVisiblity(false);
+            player.agentWeapon.ToggleWeaponVisibility(false);
             player.IsAttacking = false;
         }
         private void PerformAttack()
@@ -63,6 +64,11 @@ namespace DesignPatterns.States
         public override void GetHit()
         {
 
+        }
+
+        private void OnDisable() {
+            player.ID.PlayerEvents.OnAnimationAction -= PerformAttack;
+            player.ID.PlayerEvents.OnAnimationEnd -= CompleteAttack;
         }
     }
 }

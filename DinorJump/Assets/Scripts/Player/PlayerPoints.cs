@@ -8,7 +8,6 @@ namespace SVS.Player
 {
     public class PlayerPoints : AgentSystem, ISaveData
     {
-        [ReadOnlyInspector]
         [SerializeField]
         private int points = 0;
         public UnityEvent OnPickUpPoints;
