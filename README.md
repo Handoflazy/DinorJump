@@ -81,7 +81,7 @@ git clone https://github.com/Handoflazy/DinorJump.git
 - **Game Engine:** Unity
 - **Programming Language:** C#
 - **AI System:** Finite State Machine and Behavior Tree
-- **Graphics:** Graphics: 2D 
+- **Graphics:** 2D 
 ---
 
 
